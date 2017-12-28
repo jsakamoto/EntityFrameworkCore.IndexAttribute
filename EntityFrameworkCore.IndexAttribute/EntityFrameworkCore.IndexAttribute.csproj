@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Toolbelt.EntityFrameworkCore.IndexAttribute</AssemblyName>
+    <RootNamespace>Toolbelt.ComponentModel.DataAnnotations.Schema</RootNamespace>
+    <PackageId>Toolbelt.EntityFrameworkCore.IndexAttribute</PackageId>
+    <Authors>J.Sakamoto</Authors>
+    <Company>J.Sakamoto</Company>
+    <Product>IndexAttribute for EntityFrameworkCore</Product>
+    <Description>Revival of [Index] attribute for EF Core. (with extension for model building.)
+
+[NOTICE] EF Core team said "We didn't bring this over from EF6.x because it had a lot of issues" (https://github.com/aspnet/EntityFrameworkCore/issues/4050)
+You should consider well before use this package.</Description>
+    <Copyright>Copyright 2017 J.Sakamoto, MIT License</Copyright>
+    <PackageLicenseUrl>https://github.com/jsakamoto/EntityFrameworkCore.IndexAttribute/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/jsakamoto/EntityFrameworkCore.IndexAttribute</PackageProjectUrl>
+    <PackageReleaseNotes>v.1.0.0
+- 1st release.</PackageReleaseNotes>
+    <PackageTags>entity-framework-core entityframeworkcore efcore index attribute</PackageTags>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\netstandard2.0\Toolbelt.EntityFrameworkCore.IndexAttribute.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Release\netstandard2.0\Toolbelt.EntityFrameworkCore.IndexAttribute.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="2.0.0" />
+  </ItemGroup>
+
+</Project>

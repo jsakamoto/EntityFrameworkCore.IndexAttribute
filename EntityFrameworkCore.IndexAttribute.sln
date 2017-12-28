@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkCore.IndexAttribute", "EntityFrameworkCore.IndexAttribute\EntityFrameworkCore.IndexAttribute.csproj", "{D8527AE3-DB33-43CA-950B-22B3815DC8C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkCore.IndexAttribute.Test", "EntityFrameworkCore.IndexAttribute.Test\EntityFrameworkCore.IndexAttribute.Test.csproj", "{EAD773A0-BCCC-47EC-BD40-2B9C90A108DB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D8527AE3-DB33-43CA-950B-22B3815DC8C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8527AE3-DB33-43CA-950B-22B3815DC8C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8527AE3-DB33-43CA-950B-22B3815DC8C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8527AE3-DB33-43CA-950B-22B3815DC8C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAD773A0-BCCC-47EC-BD40-2B9C90A108DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAD773A0-BCCC-47EC-BD40-2B9C90A108DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAD773A0-BCCC-47EC-BD40-2B9C90A108DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAD773A0-BCCC-47EC-BD40-2B9C90A108DB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AC9C68B2-0D82-4D92-BC64-B71BC00F5DEB}
+	EndGlobalSection
+EndGlobal
