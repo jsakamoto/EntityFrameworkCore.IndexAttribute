@@ -19,7 +19,7 @@ namespace EntityFrameworkCore.IndexAttributeTest
             Helper.ExecuteQueryToMaster($"CREATE DATABASE [{DbName}]");
         }
 
-        [Fact(DisplayName = "CreateDb with Indexes")]
+        [Fact(DisplayName = "CreateDb with Indexes on MSSQL LocalDb")]
         public void CreateDb_with_Indexes_Test()
         {
             var connStr = $"Server=(localdb)\\mssqllocaldb;Database={DbName};Trusted_Connection=True;MultipleActiveResultSets=True;";
