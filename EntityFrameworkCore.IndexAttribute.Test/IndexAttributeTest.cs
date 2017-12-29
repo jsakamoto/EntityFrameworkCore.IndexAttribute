@@ -16,6 +16,7 @@ namespace EntityFrameworkCore.IndexAttributeTest
         public IndexAttributeTest()
         {
             DbName = Guid.NewGuid().ToString("N");
+            Helper.ExecuteQueryToMaster($"CREATE DATABASE [{DbName}]");
         }
 
         [Fact(DisplayName = "CreateDb with Indexes")]
@@ -67,19 +68,26 @@ namespace EntityFrameworkCore.IndexAttributeTest
 
             if (File.Exists(dataPhysicalPath) || File.Exists(logPhysicalPath))
             {
-                var connStr = $"Server=(localdb)\\mssqllocaldb;Database=master;Trusted_Connection=True;MultipleActiveResultSets=True;";
-                using (var conn = new SqlConnection(connStr))
-                using (var cmd = conn.CreateCommand())
+                Helper.ExecuteQueryToMaster($@"
+                    ALTER database [{DbName}] set offline with ROLLBACK IMMEDIATE;
+                    DROP DATABASE [{DbName}]");
+            }
+            if (File.Exists(dataPhysicalPath)) File.Delete(dataPhysicalPath);
+            if (File.Exists(logPhysicalPath)) File.Delete(logPhysicalPath);
+        }
+
+        private static class Helper
+        {
+            internal static void ExecuteQueryToMaster(string sql)
+            {
+                const string connStrToMaster = "Server=(localdb)\\mssqllocaldb;Database=master;Trusted_Connection=True;MultipleActiveResultSets=True;";
+                using (var conn = new SqlConnection(connStrToMaster))
+                using (var cmd = new SqlCommand(sql, conn))
                 {
-                    cmd.CommandText = $@"
-                        ALTER database [{DbName}] set offline with ROLLBACK IMMEDIATE;
-                        DROP DATABASE [{DbName}]";
                     conn.Open();
                     cmd.ExecuteNonQuery();
                 }
             }
-            if (File.Exists(dataPhysicalPath)) File.Delete(dataPhysicalPath);
-            if (File.Exists(logPhysicalPath)) File.Delete(logPhysicalPath);
         }
     }
 }
