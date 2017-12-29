@@ -1,4 +1,5 @@
-# IndexAttribute for EntityFramework Core [![NuGet Package](https://img.shields.io/nuget/v/Toolbelt.EntityFrameworkCore.IndexAttribute.svg)](https://www.nuget.org/packages/Toolbelt.EntityFrameworkCore.IndexAttribute/)
+# IndexAttribute for EntityFramework Core  
+[![Build status](https://ci.appveyor.com/api/projects/status/dv0et0b80da5mwys?svg=true)](https://ci.appveyor.com/project/jsakamoto/entityframeworkcore-indexattribute) [![NuGet Package](https://img.shields.io/nuget/v/Toolbelt.EntityFrameworkCore.IndexAttribute.svg)](https://www.nuget.org/packages/Toolbelt.EntityFrameworkCore.IndexAttribute/)
 
 ## What's this?
 
