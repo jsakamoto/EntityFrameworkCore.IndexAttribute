@@ -17,6 +17,9 @@ namespace EntityFrameworkCore.IndexAttributeTest.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Person>().OwnsOne(p => p.Address);
+
             modelBuilder.BuildIndexesFromAnnotations();
         }
     }
