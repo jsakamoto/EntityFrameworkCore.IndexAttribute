@@ -15,10 +15,13 @@ You should consider well before use this package.</Description>
     <Copyright>Copyright 2017 J.Sakamoto, MIT License</Copyright>
     <PackageLicenseUrl>https://github.com/jsakamoto/EntityFrameworkCore.IndexAttribute/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/jsakamoto/EntityFrameworkCore.IndexAttribute</PackageProjectUrl>
-    <PackageReleaseNotes>v.1.0.0
+    <PackageReleaseNotes>v.1.0.1
+- Added support for Owned Entity Types.
+v.1.0.0
 - 1st release.</PackageReleaseNotes>
     <PackageTags>entity-framework-core entityframeworkcore efcore index attribute</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>1.0.1-beta</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
