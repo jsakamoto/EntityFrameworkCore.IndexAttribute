@@ -53,6 +53,9 @@ namespace EntityFrameworkCore.IndexAttributeTest
                     try { while (r.Read()) dump.Add($"{r["Table"]}|{r["Index"]}|{r["Column"]}|{r["IsUnique"]}"); }
                     finally { r.Close(); }
                     dump.Is(
+                        "People|IX_Country|Address_Country|False",
+                        "People|IX_Lines|Line1|False",
+                        "People|IX_Lines|Line2|False",
                         "People|IX_People_Name|Name|True",
                         "SNSAccounts|Ix_Provider_and_Account|Provider|True",
                         "SNSAccounts|Ix_Provider_and_Account|AccountName|True",
