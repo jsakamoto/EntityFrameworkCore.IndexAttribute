@@ -86,11 +86,9 @@ namespace Toolbelt.ComponentModel.DataAnnotations
             {
                 return (IndexParam indexParam) =>
                 {
-                    Action<ReferenceOwnershipBuilder> buildAction = builder => builder
+                    modelBuilder.CreateIndexForOwnedType(entityType, builder => builder
                         .HasIndex(indexParam.PropertyNames)
-                        .Apply(indexParam);
-
-                    modelBuilder.CreateIndexForOwnedType(entityType, buildAction);
+                        .Apply(indexParam));
                 };
             }
         }
