@@ -17,17 +17,19 @@ namespace EntityFrameworkCore.IndexAttributeTest.Models
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Person>().OwnsOne(p => p.Address,
-                address =>
-                {
-                    address.OwnsOne(a => a.Lines,
-                        lines =>
-                        {
-                            lines.Property(l => l.Line1).HasColumnName("Line1");
-                            lines.Property(l => l.Line2).HasColumnName("Line2");
-                            lines.Property(l => l.Line3).HasColumnName("Line3");
-                        });
-                });
+            var person = modelBuilder.Entity<Person>();
+            person.OwnsOne(p => p.Address, address =>
+            {
+                address.OwnsOne(a => a.Lines,
+                    lines =>
+                    {
+                        lines.Property(l => l.Line1).HasColumnName("Line1");
+                        lines.Property(l => l.Line2).HasColumnName("Line2");
+                        lines.Property(l => l.Line3).HasColumnName("Line3");
+                    });
+            });
+            person.OwnsOne(p => p.PhoneNumber);
+            person.OwnsOne(p => p.FaxNumber);
 
             //modelBuilder.Entity<Person>().OwnsOne(typeof(Address), "Address", address =>
             //{

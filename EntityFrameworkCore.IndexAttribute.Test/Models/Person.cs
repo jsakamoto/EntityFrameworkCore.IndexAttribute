@@ -12,5 +12,9 @@ namespace EntityFrameworkCore.IndexAttributeTest.Models
         public int Age { get; set; }
 
         public Address Address { get; set; }
+
+        public PhoneNumber PhoneNumber { get; set; }
+
+        public PhoneNumber FaxNumber { get; set; }
     }
 }
