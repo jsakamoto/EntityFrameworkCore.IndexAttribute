@@ -72,5 +72,5 @@ Please visit document site of EF 6.x and `[Index]` attribute for EF 6.x.
 
 ## License
 
-[MIT License](LICENSE)
+[MIT License](https://github.com/jsakamoto/EntityFrameworkCore.IndexAttribute/blob/master/LICENSE)
 
