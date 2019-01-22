@@ -1,5 +1,4 @@
-﻿using System;
-using Toolbelt.ComponentModel.DataAnnotations.Schema;
+﻿using Toolbelt.ComponentModel.DataAnnotations.Schema;
 
 namespace EntityFrameworkCore.IndexAttributeTest.Models
 {
@@ -11,5 +10,11 @@ namespace EntityFrameworkCore.IndexAttributeTest.Models
         public string Name { get; set; }
 
         public int Age { get; set; }
+
+        public Address Address { get; set; }
+
+        public PhoneNumber PhoneNumber { get; set; }
+
+        public PhoneNumber FaxNumber { get; set; }
     }
 }
