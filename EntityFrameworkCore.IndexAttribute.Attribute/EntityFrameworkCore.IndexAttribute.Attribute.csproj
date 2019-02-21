@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Toolbelt.EntityFrameworkCore.IndexAttribute.Attribute</AssemblyName>
+    <RootNamespace>Toolbelt.ComponentModel.DataAnnotations.Schema</RootNamespace>
+    <Authors>J.Sakamoto</Authors>
+    <Company>J.Sakamoto</Company>
+    <Product>IndexAttribute for EntityFrameworkCore</Product>
+    <Description>Revival of [Index] attribute for EF Core.</Description>
+    <Copyright>Copyright 2017-2019 J.Sakamoto, MIT License</Copyright>
+    <PackageLicenseUrl>https://github.com/jsakamoto/EntityFrameworkCore.IndexAttribute/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/jsakamoto/EntityFrameworkCore.IndexAttribute</PackageProjectUrl>
+    <PackageTags>entity-framework-core entityframeworkcore efcore index attribute</PackageTags>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+
+  <PropertyGroup>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
+    <NoWarn>1701;1702;1705;1591</NoWarn>
+  </PropertyGroup>
+
+</Project>

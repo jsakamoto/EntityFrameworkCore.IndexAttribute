@@ -1,119 +1,63 @@
 ﻿using System;
 using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Toolbelt.ComponentModel.DataAnnotations.Schema;
+using Toolbelt.EntityFrameworkCore.Metadata.Builders;
 
 namespace Toolbelt.ComponentModel.DataAnnotations
 {
     public static class AttributedIndexBuilderExtension
     {
-        private class IndexParam
+        private class IndexBuilderArgument
         {
+            public string[] PropertyNames { get; }
+
             public string IndexName { get; }
 
             public bool IsUnique { get; }
 
-            public string[] PropertyNames { get; }
-
-            public IndexParam(IndexAttribute indexAttr, params PropertyInfo[] properties)
+            public IndexBuilderArgument(IndexAttribute indexAttr, params string[] propertyNames)
             {
+                this.PropertyNames = propertyNames;
                 this.IndexName = indexAttr.Name;
                 this.IsUnique = indexAttr.IsUnique;
-                this.PropertyNames = properties.Select(prop => prop.Name).ToArray();
             }
         }
 
         public static void BuildIndexesFromAnnotations(this ModelBuilder modelBuilder)
         {
-            var entityTypes = modelBuilder.Model.GetEntityTypes();
-
-            Parallel.ForEach(entityTypes, entityType =>
-            {
-                var indexParams = BuildIndexParams(entityType);
-                if (indexParams.Length == 0) return;
-
-                Action<IndexParam> createIndex = BuildCreateIndexAction(modelBuilder, entityType);
-
-                lock (modelBuilder)
-                {
-                    foreach (var indexParam in indexParams)
-                    {
-                        createIndex(indexParam);
-                    }
-                }
-            });
+            AnnotationBasedModelBuilder.Build<IndexAttribute, IndexBuilderArgument>(
+                modelBuilder,
+                CreateBuilderArguments,
+                Build);
         }
 
-        private static IndexParam[] BuildIndexParams(Microsoft.EntityFrameworkCore.Metadata.IMutableEntityType entityType)
+        private static IndexBuilderArgument[] CreateBuilderArguments(AnnotatedProperty<IndexAttribute>[] annotatedProperties)
         {
-            var items = entityType.ClrType
-                .GetProperties()
-                .SelectMany(prop => Attribute.GetCustomAttributes(prop, typeof(IndexAttribute))
-                    .Cast<IndexAttribute>()
-                    .Select(index => new { prop, index })
-                ).ToArray();
+            var unnamedIndexArgs = annotatedProperties
+                .Where(prop => prop.Attribute.Name == "")
+                .Select(prop => new IndexBuilderArgument(prop.Attribute, prop.Name));
 
-            var unnamedIndexParams = items
-                .Where(item => item.index.Name == "")
-                .Select(item => new IndexParam(item.index, item.prop));
-
-            var namedIndexParams = items
-                .Where(item => item.index.Name != "")
-                .GroupBy(item => item.index.Name)
-                .Select(g => new IndexParam(
-                    g.First().index,
-                    g.OrderBy(item => item.index.Order).Select(item => item.prop).ToArray())
+            var namedIndexArgs = annotatedProperties
+                .Where(prop => prop.Attribute.Name != "")
+                .GroupBy(prop => prop.Attribute.Name)
+                .Select(g => new IndexBuilderArgument(
+                    g.First().Attribute,
+                    g.OrderBy(item => item.Attribute.Order).Select(item => item.Name).ToArray())
                 );
 
-            var indexParams = unnamedIndexParams.Concat(namedIndexParams).ToArray();
-            return indexParams;
+            var indexBuilderArgs = unnamedIndexArgs.Concat(namedIndexArgs).ToArray();
+            return indexBuilderArgs;
         }
 
-        private static Action<IndexParam> BuildCreateIndexAction(ModelBuilder modelBuilder, IMutableEntityType entityType)
+        private static void Build(EntityTypeBuilder builder1, ReferenceOwnershipBuilder builder2, IndexBuilderArgument builderArg)
         {
-            if (!entityType.IsOwned())
+            var indexBuilder = builder1?.HasIndex(builderArg.PropertyNames) ?? builder2.HasIndex(builderArg.PropertyNames);
+            indexBuilder.IsUnique(builderArg.IsUnique);
+            if (builderArg.IndexName != "")
             {
-                return (IndexParam indexParam) => modelBuilder
-                    .Entity(entityType.ClrType)
-                    .HasIndex(indexParam.PropertyNames)
-                    .Apply(indexParam);
-            }
-            else
-            {
-                return (IndexParam indexParam) =>
-                {
-                    modelBuilder.CreateIndexForOwnedType(entityType, builder => builder
-                        .HasIndex(indexParam.PropertyNames)
-                        .Apply(indexParam));
-                };
-            }
-        }
-
-        private static void CreateIndexForOwnedType(this ModelBuilder modelBuilder, IEntityType owned, Action<ReferenceOwnershipBuilder> buildAction)
-        {
-            var owner = owned.DefiningEntityType;
-            if (!owner.IsOwned())
-            {
-                modelBuilder.Entity(owner.ClrType)
-                    .OwnsOne(owned.ClrType, owned.DefiningNavigationName, buildAction);
-            }
-            else
-            {
-                modelBuilder.CreateIndexForOwnedType(owner, builder =>
-                    builder.OwnsOne(owned.ClrType, owned.DefiningNavigationName, buildAction));
-            }
-        }
-
-        private static void Apply(this IndexBuilder indexBuilder, IndexParam indexParam)
-        {
-            indexBuilder.IsUnique(indexParam.IsUnique);
-            if (indexParam.IndexName != "")
-            {
-                indexBuilder.HasName(indexParam.IndexName);
+                indexBuilder.HasName(builderArg.IndexName);
             }
         }
     }

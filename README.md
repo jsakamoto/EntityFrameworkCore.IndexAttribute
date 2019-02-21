@@ -17,7 +17,13 @@ Therefore, you should consider well before use this package.
 
 ## How to use?
 
-1. Annotate your model with `[Index]` attribute that lives in `Toolbelt.ComponentModel.DataAnnotations.Schema` namespace.
+1. Add [`Toolbelt.EntityFrameworkCore.IndexAttribute`](https://www.nuget.org/packages/Toolbelt.EntityFrameworkCore.IndexAttribute/) package to your project.
+
+```shell
+> dotnet add package Toolbelt.EntityFrameworkCore.IndexAttribute
+```
+
+2. Annotate your model with `[Index]` attribute that lives in `Toolbelt.ComponentModel.DataAnnotations.Schema` namespace.
 
 ```csharp
 using Toolbelt.ComponentModel.DataAnnotations.Schema;
@@ -31,7 +37,7 @@ public class Person
 }
 ```
 
-2. **[Important]** Override `OnModelCreating()` method of your DbContext class, and call `BuildIndexesFromAnnotations()` extension method which lives in `Toolbelt.ComponentModel.DataAnnotations` namespace.
+3. **[Important]** Override `OnModelCreating()` method of your DbContext class, and call `BuildIndexesFromAnnotations()` extension method which lives in `Toolbelt.ComponentModel.DataAnnotations` namespace.
 
 ```csharp
 using Microsoft.EntityFrameworkCore;
@@ -69,6 +75,12 @@ Please visit document site of EF 6.x and `[Index]` attribute for EF 6.x.
 ## Not Supported Feature
 
 `IsClustered` property is not supported at this version.
+
+## Appendix
+
+### If you want to use only "IndexAttribute" without any dependencies...
+
+If you want to use only "IndexAttribute" class without any dependencies, you can use [Toolbelt.EntityFrameworkCore.IndexAttribute.Attribute](https://www.nuget.org/packages/Toolbelt.EntityFrameworkCore.IndexAttribute.Attribute) NuGet package.
 
 ## License
 
