@@ -16,7 +16,9 @@ You should consider well before use this package.
     <Copyright>Copyright 2017-2019 J.Sakamoto, MIT License</Copyright>
     <PackageLicenseUrl>https://github.com/jsakamoto/EntityFrameworkCore.IndexAttribute/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/jsakamoto/EntityFrameworkCore.IndexAttribute</PackageProjectUrl>
-    <PackageReleaseNotes>v.1.0.2
+    <PackageReleaseNotes>v.2.0.0
+- Splitted [Index] attribute class to another package for detach the dependencies of EF Core from [Index] attribute.
+v.1.0.2
 - Added support for Owned Entity Types.
 v.1.0.0
 - 1st release.</PackageReleaseNotes>
