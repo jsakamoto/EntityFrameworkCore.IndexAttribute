@@ -1,18 +1,15 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
-
-    <IsPackable>false</IsPackable>
-
+    <TargetFramework>netcoreapp2.1</TargetFramework>
     <RootNamespace>EntityFrameworkCore.IndexAttributeTest</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="ChainingAssertion-xUnit.Bin" Version="1.7.5" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.0.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.1.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.11" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.5.0" />
+    <PackageReference Include="ChainingAssertion-xUnit.Bin" Version="1.7.5" />
     <PackageReference Include="xunit" Version="2.3.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
     <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
@@ -21,5 +18,7 @@
   <ItemGroup>
     <ProjectReference Include="..\EntityFrameworkCore.IndexAttribute\EntityFrameworkCore.IndexAttribute.csproj" />
   </ItemGroup>
+
+  <Import Project="..\EntityFrameworkCore.IndexAttribute.Test\EntityFrameworkCore.IndexAttribute.Test.projitems" Label="Shared" />
 
 </Project>
