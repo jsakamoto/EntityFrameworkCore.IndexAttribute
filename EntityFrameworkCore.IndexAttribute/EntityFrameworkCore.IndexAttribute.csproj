@@ -14,9 +14,11 @@
 You should consider well before use this package.
 </Description>
     <Copyright>Copyright 2017-2019 J.Sakamoto, MIT License</Copyright>
-    <PackageLicenseUrl>https://github.com/jsakamoto/EntityFrameworkCore.IndexAttribute/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageLicenseUrl></PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/jsakamoto/EntityFrameworkCore.IndexAttribute</PackageProjectUrl>
-    <PackageReleaseNotes>v.2.0.0
+    <PackageReleaseNotes>v.2.0.1
+- Fix: Doesn't work with owned types on EF Core v.2.1, v.2.2.
+v.2.0.0
 - Splitted [Index] attribute class to another package for detach the dependencies of EF Core from [Index] attribute.
 v.1.0.2
 - Added support for Owned Entity Types.
@@ -24,7 +26,8 @@ v.1.0.0
 - 1st release.</PackageReleaseNotes>
     <PackageTags>entity-framework-core entityframeworkcore efcore index attribute</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>2.0.0.0</Version>
+    <Version>2.0.1.0</Version>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -39,7 +42,7 @@ v.1.0.0
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="2.0.0" />
-    <PackageReference Include="Toolbelt.EntityFrameworkCore.AnnotationBasedModelBuilder" Version="1.0.0.4" />
+    <PackageReference Include="Toolbelt.EntityFrameworkCore.AnnotationBasedModelBuilder" Version="1.0.2" />
     <PackageReference Include="Toolbelt.EntityFrameworkCore.IndexAttribute.Attribute" Version="1.0.0" />
   </ItemGroup>
 

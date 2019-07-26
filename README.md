@@ -82,6 +82,13 @@ Please visit document site of EF 6.x and `[Index]` attribute for EF 6.x.
 
 If you want to use only "IndexAttribute" class without any dependencies, you can use [Toolbelt.EntityFrameworkCore.IndexAttribute.Attribute](https://www.nuget.org/packages/Toolbelt.EntityFrameworkCore.IndexAttribute.Attribute) NuGet package.
 
+## Release Note
+
+- **v.2.0.1** - Fix: Doesn't work with owned types on EF Core v.2.1, v.2.2.
+- **v.2.0.0** - Splitted [Index] attribute class to another package for detach the dependencies of EF Core from [Index] attribute.
+- **v.1.0.2** - Added support for Owned Entity Types.
+- **v.1.0.0** - 1st release.
+
 ## License
 
 [MIT License](https://github.com/jsakamoto/EntityFrameworkCore.IndexAttribute/blob/master/LICENSE)
