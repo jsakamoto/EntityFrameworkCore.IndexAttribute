@@ -10,7 +10,7 @@ namespace EntityFrameworkCore.IndexAttributeTest
         [Fact(DisplayName = "CreateDb with Indexes on SQLite")]
         public void CreateDb_with_Indexes_Test()
         {
-            var option = new DbContextOptionsBuilder<MyDbContext>()
+            var option = new DbContextOptionsBuilder<MyDbContextBase>()
                 .UseSqlite("Data Source=:memory:")
                 .Options;
             using (var db = new MyDbContext(option))

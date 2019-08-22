@@ -1,4 +1,5 @@
 ﻿using System;
+using Toolbelt.ComponentModel.DataAnnotations.Schema.Internals;
 
 namespace Toolbelt.ComponentModel.DataAnnotations.Schema
 {
@@ -6,15 +7,15 @@ namespace Toolbelt.ComponentModel.DataAnnotations.Schema
     /// Represents an attribute that is placed on a property to indicate that the database column to which the property is mapped has an index.
     /// </summary>
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = true)]
-    public class IndexAttribute : Attribute
+    public class IndexAttribute : Attribute, INameAndOrder
     {
         /// <summary>
-        /// Gets or sets the index name.
+        /// Gets the index name.
         /// </summary>
         public string Name { get; }
 
         /// <summary>
-        /// Gets or sets a number that determines the column ordering for multi-column indexes. This will be -1 if no column order has been specified.
+        /// Gets a number that determines the column ordering for multi-column indexes. This will be -1 if no column order has been specified.
         /// </summary>
         public int Order { get; }
 
@@ -22,6 +23,11 @@ namespace Toolbelt.ComponentModel.DataAnnotations.Schema
         /// Gets or sets a value to indicate whether to define a unique index.
         /// </summary>
         public bool IsUnique { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value to indicate whether to define a cluster index.
+        /// </summary>
+        public bool IsClustered { get; set; }
 
         /// <summary>
         /// Initializes a new IndexAttribute instance for an index that will be named by convention and has no column order, uniqueness specified.

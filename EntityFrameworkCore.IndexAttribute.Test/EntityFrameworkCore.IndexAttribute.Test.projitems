@@ -14,6 +14,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\Address.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Enums\SNSProviders.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Lines.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\MyDbContextForSqlServer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\MyDbContextBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\MyDbContext.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Person.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\PhoneNumber.cs" />

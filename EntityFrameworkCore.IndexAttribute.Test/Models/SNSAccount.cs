@@ -5,6 +5,7 @@ namespace EntityFrameworkCore.IndexAttributeTest.Models
 {
     public class SNSAccount
     {
+        [PrimaryKey(IsClustered = false)]
         public int Id { get; set; }
 
         public int PersonId { get; set; }
@@ -13,10 +14,10 @@ namespace EntityFrameworkCore.IndexAttributeTest.Models
         public virtual Person Person { get; set; }
 
         [Index]
-        [Index("Ix_Provider_and_Account", 1, IsUnique = true)]
+        [Index("Ix_Provider_and_Account", 1, IsUnique = true, IsClustered = true)]
         public SNSProviders Provider { get; set; }
 
-        [Index("Ix_Provider_and_Account", 2, IsUnique = true)]
+        [Index("Ix_Provider_and_Account", 2, IsUnique = true, IsClustered = true)]
         public string AccountName { get; set; }
     }
 }
