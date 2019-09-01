@@ -21,6 +21,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityFrameworkCore.IndexAt
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "EntityFrameworkCore.IndexAttribute.Test", "EntityFrameworkCore.IndexAttribute.Test\EntityFrameworkCore.IndexAttribute.Test.shproj", "{58B58CBB-EE83-4A43-8C69-A02204C84F57}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkCore.IndexAttribute.SqlServer", "EntityFrameworkCore.IndexAttribute.SqlServer\EntityFrameworkCore.IndexAttribute.SqlServer.csproj", "{04DCC94C-58BF-4919-9BBE-C53FD3212E57}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		EntityFrameworkCore.IndexAttribute.Test\EntityFrameworkCore.IndexAttribute.Test.projitems*{58b58cbb-ee83-4a43-8c69-a02204c84f57}*SharedItemsImports = 13
@@ -50,6 +52,10 @@ Global
 		{351B5840-DF4F-4BD1-BCD7-8E3E282711F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{351B5840-DF4F-4BD1-BCD7-8E3E282711F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{351B5840-DF4F-4BD1-BCD7-8E3E282711F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04DCC94C-58BF-4919-9BBE-C53FD3212E57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04DCC94C-58BF-4919-9BBE-C53FD3212E57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04DCC94C-58BF-4919-9BBE-C53FD3212E57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04DCC94C-58BF-4919-9BBE-C53FD3212E57}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

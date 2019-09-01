@@ -4,23 +4,30 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Toolbelt.EntityFrameworkCore.IndexAttribute.Attribute</AssemblyName>
     <RootNamespace>Toolbelt.ComponentModel.DataAnnotations.Schema</RootNamespace>
+    <Version>1.1.0.4</Version>
     <Authors>J.Sakamoto</Authors>
     <Company>J.Sakamoto</Company>
     <Product>IndexAttribute for EntityFrameworkCore</Product>
-    <Description>Revival of [Index] attribute for EF Core.</Description>
+    <Description>Revival of [Index] attribute for EF Core.
+This package also provides [PrimaryKey] attribute.</Description>
     <Copyright>Copyright 2017-2019 J.Sakamoto, MIT License</Copyright>
-    <PackageLicenseUrl>https://github.com/jsakamoto/EntityFrameworkCore.IndexAttribute/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageLicenseUrl></PackageLicenseUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/jsakamoto/EntityFrameworkCore.IndexAttribute</PackageProjectUrl>
     <PackageTags>entity-framework-core entityframeworkcore efcore index attribute</PackageTags>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild Condition=" '$(Configuration)' == 'Release' ">true</GeneratePackageOnBuild>
+    <PackageOutputPath>..\dist\</PackageOutputPath>
   </PropertyGroup>
-
 
   <PropertyGroup>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
-    <NoWarn>1701;1702;1705;1591</NoWarn>
-    <PackageReleaseNotes>v.1.0.0
-- 1st release.</PackageReleaseNotes>
+    <NoWarn>$(NoWarn);1591</NoWarn>
+    <PackageReleaseNotes>v.1.1.0
+- Add "IsClustered" index property
+- Add "PrimaryKey" attribute class
+v.1.0.0
+- 1st release.
+</PackageReleaseNotes>
   </PropertyGroup>
 
 </Project>

@@ -8,6 +8,8 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.1.11" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.11" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="2.1.1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.5.0" />
     <PackageReference Include="ChainingAssertion-xUnit.Bin" Version="1.7.5" />
     <PackageReference Include="xunit" Version="2.3.1" />
@@ -16,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EntityFrameworkCore.IndexAttribute\EntityFrameworkCore.IndexAttribute.csproj" />
+    <ProjectReference Include="..\EntityFrameworkCore.IndexAttribute.SqlServer\EntityFrameworkCore.IndexAttribute.SqlServer.csproj" />
   </ItemGroup>
 
   <Import Project="..\EntityFrameworkCore.IndexAttribute.Test\EntityFrameworkCore.IndexAttribute.Test.projitems" Label="Shared" />

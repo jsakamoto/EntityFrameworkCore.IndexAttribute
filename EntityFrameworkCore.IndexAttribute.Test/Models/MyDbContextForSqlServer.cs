@@ -3,16 +3,16 @@ using Toolbelt.ComponentModel.DataAnnotations;
 
 namespace EntityFrameworkCore.IndexAttributeTest.Models
 {
-    public class MyDbContext : MyDbContextBase
+    public class MyDbContextForSqlServer : MyDbContextBase
     {
-        public MyDbContext(DbContextOptions<MyDbContextBase> options) : base(options)
+        public MyDbContextForSqlServer(DbContextOptions<MyDbContextBase> options) : base(options)
         {
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.BuildIndexesFromAnnotations(options => options.SuppressNotSupportedException.IsClustered = true);
+            modelBuilder.BuildIndexesFromAnnotationsForSqlServer();
         }
     }
 }

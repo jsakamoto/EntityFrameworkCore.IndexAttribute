@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using EntityFrameworkCore.IndexAttributeTest.Models;
 using Microsoft.EntityFrameworkCore;
 using Xunit;
@@ -10,7 +11,7 @@ namespace EntityFrameworkCore.IndexAttributeTest
         [Fact(DisplayName = "CreateDb with Indexes on SQLite")]
         public void CreateDb_with_Indexes_Test()
         {
-            var option = new DbContextOptionsBuilder<MyDbContext>()
+            var option = new DbContextOptionsBuilder<MyDbContextBase>()
                 .UseSqlite("Data Source=:memory:")
                 .Options;
             using (var db = new MyDbContext(option))
@@ -42,6 +43,22 @@ namespace EntityFrameworkCore.IndexAttributeTest
                         @"CREATE INDEX ""IX_SNSAccounts_Provider"" ON ""SNSAccounts"" (""Provider"")",
                         @"CREATE UNIQUE INDEX ""Ix_Provider_and_Account"" ON ""SNSAccounts"" (""Provider"", ""AccountName"")");
                 }
+            }
+        }
+
+        [Fact(DisplayName = "IsClustered=true with no configuration causes NotSupportedException")]
+        public void IsCLusteredTrue_With_NoConfiguration_Causes_NotSupportedException_Test()
+        {
+            var option = new DbContextOptionsBuilder<MyDbContextBase>()
+                .UseSqlite("Data Source=:memory:")
+                .Options;
+            using (var db = new MyDbContextWithNoConfiguration(option))
+            {
+                var e = Assert.ThrowsAny<AggregateException>(() =>
+                {
+                    db.Database.OpenConnection();
+                });
+                e.InnerException.IsInstanceOf<NotSupportedException>();
             }
         }
     }

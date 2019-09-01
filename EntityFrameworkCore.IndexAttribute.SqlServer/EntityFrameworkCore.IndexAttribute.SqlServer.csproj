@@ -2,48 +2,37 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Toolbelt.EntityFrameworkCore.IndexAttribute</AssemblyName>
+    <AssemblyName>Toolbelt.EntityFrameworkCore.IndexAttribute.SqlServer</AssemblyName>
     <RootNamespace>Toolbelt.ComponentModel.DataAnnotations.Schema</RootNamespace>
-    <PackageId>Toolbelt.EntityFrameworkCore.IndexAttribute</PackageId>
-    <Version>2.1.0</Version>
+    <PackageId>Toolbelt.EntityFrameworkCore.IndexAttribute.SqlServer</PackageId>
+    <Version>1.0.0.2</Version>
     <Authors>J.Sakamoto</Authors>
     <Company>J.Sakamoto</Company>
     <Product>IndexAttribute and model builder extension for EntityFrameworkCore</Product>
     <Description>Revival of [Index] attribute for EF Core. (with extension for model building.)
-This package also provides [PrimaryKey] attribute.
+This package also provides [PrimaryKey] attribute, and supports "IsClustered" property.
 
 [NOTICE] EF Core team said "We didn't bring this over from EF6.x because it had a lot of issues" (https://github.com/aspnet/EntityFrameworkCore/issues/4050)
-You should consider well before use this package.
-</Description>
-    <Copyright>Copyright 2017-2019 J.Sakamoto, MIT License</Copyright>
+You should consider well before use this package.</Description>
+    <Copyright>Copyright 2019 J.Sakamoto, MIT License</Copyright>
     <PackageLicenseUrl></PackageLicenseUrl>
-    <PackageProjectUrl>https://github.com/jsakamoto/EntityFrameworkCore.IndexAttribute</PackageProjectUrl>
-    <PackageReleaseNotes>v.2.1.0
-- Add support [PrimaryKey] attribute.
-v.2.0.1
-- Fix: Doesn't work with owned types on EF Core v.2.1, v.2.2.
-v.2.0.0
-- Splitted [Index] attribute class to another package for detach the dependencies of EF Core from [Index] attribute.
-v.1.0.2
-- Added support for Owned Entity Types.
-v.1.0.0
-- 1st release.
-</PackageReleaseNotes>
-    <PackageTags>entity-framework-core entityframeworkcore efcore index attribute</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/jsakamoto/EntityFrameworkCore.IndexAttribute</PackageProjectUrl>
+    <PackageReleaseNotes>v.1.0.0
+- 1st release.</PackageReleaseNotes>
+    <PackageTags>entity-framework-core entityframeworkcore efcore index attribute</PackageTags>
     <GeneratePackageOnBuild Condition=" '$(Configuration)' == 'Release' ">true</GeneratePackageOnBuild>
     <PackageOutputPath>..\dist\</PackageOutputPath>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.0" />
+    <PackageReference Include="Toolbelt.EntityFrameworkCore.IndexAttribute" Version="2.1.0" />
+  </ItemGroup>
 
   <PropertyGroup>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
     <NoWarn>$(NoWarn);1591</NoWarn>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="2.0.0" />
-    <PackageReference Include="Toolbelt.EntityFrameworkCore.AnnotationBasedModelBuilder" Version="1.0.2" />
-    <PackageReference Include="Toolbelt.EntityFrameworkCore.IndexAttribute.Attribute" Version="1.1.0.4" />
-  </ItemGroup>
 
 </Project>
