@@ -84,9 +84,7 @@ That's all!
 
 After doing that, the database which created by EF Core, contains indexes that are specified by `[Index]` attributes.
 
-## Appendix
-
-## Suppress "NotSupportedException"
+## Appendix A - Suppress "NotSupportedException"
 
 You will run into "NotSupportedException" when you call `BuildIndexesFromAnnotations()` with the model which is annotated with the `[Index]` attribute that's "IsClustered" property is true.
 
@@ -106,7 +104,7 @@ If you have to call `BuildIndexesFromAnnotations()` in this case (for example, s
 }
 ```
 
-## Notice for using "IsClustered=true"
+## Appendix B -  Notice for using "IsClustered=true"
 
 If you annotate the model with "IsClustered=true" index simply like this,
 
@@ -139,7 +137,7 @@ public class Employee {
 }
 ```
 
-### If you want to use only "IndexAttribute" without any dependencies...
+## Appendix C -  If you want to use only "IndexAttribute" without any dependencies...
 
 If you want to use only "IndexAttribute" class without any dependencies, you can use [Toolbelt.EntityFrameworkCore.IndexAttribute.Attribute](https://www.nuget.org/packages/Toolbelt.EntityFrameworkCore.IndexAttribute.Attribute) NuGet package.
 
