@@ -40,22 +40,35 @@ namespace Toolbelt.ComponentModel.DataAnnotations
         {
             modelBuilder.BuildIndexesFromAnnotations(
                 postProcessForIndex: null,
-                postProcessForPrimaryKey: null);
+                postProcessForPrimaryKey: null,
+                configure: null);
+        }
+
+        public static void BuildIndexesFromAnnotations(this ModelBuilder modelBuilder, Action<AttributedIndexBuilderOptions> configure)
+        {
+            modelBuilder.BuildIndexesFromAnnotations(
+                postProcessForIndex: null,
+                postProcessForPrimaryKey: null,
+                configure: configure);
         }
 
         internal static void BuildIndexesFromAnnotations(
             this ModelBuilder modelBuilder,
             Action<IndexBuilder, IndexBuilderArgument> postProcessForIndex,
-            Action<KeyBuilder, IndexBuilderArgument> postProcessForPrimaryKey
+            Action<KeyBuilder, IndexBuilderArgument> postProcessForPrimaryKey,
+            Action<AttributedIndexBuilderOptions> configure
         )
         {
+            var options = new AttributedIndexBuilderOptions();
+            configure?.Invoke(options);
+
             AnnotationBasedModelBuilder.Build<IndexAttribute, IndexBuilderArgument>(
                 modelBuilder,
-                (props) => CreateBuilderArguments(props, (a, n) => new IndexBuilderArgument(a, n)),
-                (b1, b2, arg) => BuildIndex(b1, b2, arg, postProcessForIndex));
+                (props) => CreateBuilderArguments(props, (attr, propNames) => new IndexBuilderArgument(attr, propNames)),
+                (b1, b2, arg) => BuildIndex(options, b1, b2, arg, postProcessForIndex));
             AnnotationBasedModelBuilder.Build<PrimaryKeyAttribute, IndexBuilderArgument>(
                 modelBuilder,
-                (props) => CreateBuilderArguments(props, (a, n) => new IndexBuilderArgument(a, n)),
+                (props) => CreateBuilderArguments(props, (attr, propNames) => new IndexBuilderArgument(attr, propNames)),
                 (b1, b2, arg) => BuildPrimaryKey(b1, b2, arg, postProcessForPrimaryKey));
         }
 
@@ -81,8 +94,19 @@ namespace Toolbelt.ComponentModel.DataAnnotations
             return indexBuilderArgs;
         }
 
-        private static void BuildIndex(EntityTypeBuilder builder1, ReferenceOwnershipBuilder builder2, IndexBuilderArgument builderArg, Action<IndexBuilder, IndexBuilderArgument> postProcess)
+        private static void BuildIndex(
+            AttributedIndexBuilderOptions options,
+            EntityTypeBuilder builder1,
+            ReferenceOwnershipBuilder builder2,
+            IndexBuilderArgument builderArg,
+            Action<IndexBuilder, IndexBuilderArgument> postProcess)
         {
+            if (!options.SuppressNotSupportedException.IsClustered && builderArg.IsClustered)
+                throw new NotSupportedException(
+                    "\"IsClustered=true\" of [Index] attribute is not supported.\n" +
+                    "If you want to use \"IsClustered=true\", you need to call \"BuildIndexesFromAnnotationsForSqlServer()\" (in the Toolbelt.EntityFrameworkCore.IndexAttribute.SqlServer package) instead of \"BuildIndexesFromAnnotations()\", for a SQL Server connection.\n" +
+                    "You can also suppress this exception by calling like \"BuildIndexesFromAnnotations(options => options.SupressUnsupportedException.IsClustered = true)\"");
+
             var indexBuilder = builder1?.HasIndex(builderArg.PropertyNames) ?? builder2.HasIndex(builderArg.PropertyNames);
             indexBuilder.IsUnique(builderArg.IsUnique);
             if (builderArg.IndexName != "")

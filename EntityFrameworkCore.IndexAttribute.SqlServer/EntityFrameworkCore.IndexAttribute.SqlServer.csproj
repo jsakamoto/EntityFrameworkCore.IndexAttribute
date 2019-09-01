@@ -27,7 +27,7 @@ You should consider well before use this package.</Description>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.0" />
-    <PackageReference Include="Toolbelt.EntityFrameworkCore.IndexAttribute" Version="2.0.2.3-beta" />
+    <PackageReference Include="Toolbelt.EntityFrameworkCore.IndexAttribute" Version="2.0.2.6-beta" />
   </ItemGroup>
 
   <PropertyGroup>
