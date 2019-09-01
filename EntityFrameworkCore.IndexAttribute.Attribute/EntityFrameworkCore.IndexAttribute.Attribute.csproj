@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Toolbelt.EntityFrameworkCore.IndexAttribute.Attribute</AssemblyName>
     <RootNamespace>Toolbelt.ComponentModel.DataAnnotations.Schema</RootNamespace>
-    <Version>1.1.0.3-beta</Version>
+    <Version>1.1.0.4</Version>
     <Authors>J.Sakamoto</Authors>
     <Company>J.Sakamoto</Company>
     <Product>IndexAttribute for EntityFrameworkCore</Product>

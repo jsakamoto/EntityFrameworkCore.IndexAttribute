@@ -5,7 +5,7 @@
     <AssemblyName>Toolbelt.EntityFrameworkCore.IndexAttribute.SqlServer</AssemblyName>
     <RootNamespace>Toolbelt.ComponentModel.DataAnnotations.Schema</RootNamespace>
     <PackageId>Toolbelt.EntityFrameworkCore.IndexAttribute.SqlServer</PackageId>
-    <Version>1.0.0.1-beta</Version>
+    <Version>1.0.0.2</Version>
     <Authors>J.Sakamoto</Authors>
     <Company>J.Sakamoto</Company>
     <Product>IndexAttribute and model builder extension for EntityFrameworkCore</Product>
@@ -27,7 +27,7 @@ You should consider well before use this package.</Description>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.0" />
-    <PackageReference Include="Toolbelt.EntityFrameworkCore.IndexAttribute" Version="2.0.2.6-beta" />
+    <PackageReference Include="Toolbelt.EntityFrameworkCore.IndexAttribute" Version="2.1.0" />
   </ItemGroup>
 
   <PropertyGroup>
