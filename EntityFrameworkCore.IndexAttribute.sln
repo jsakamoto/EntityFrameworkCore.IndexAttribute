@@ -13,15 +13,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "README", "README", "{2DBA60
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityFrameworkCore.IndexAttribute.Attribute", "EntityFrameworkCore.IndexAttribute.Attribute\EntityFrameworkCore.IndexAttribute.Attribute.csproj", "{2C15BC9E-DB1D-4DC3-A818-F9AF0A6ADDD2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityFrameworkCore.IndexAttribute.Test.EF20", "EntityFrameworkCore.IndexAttribute.Test.EF20\EntityFrameworkCore.IndexAttribute.Test.EF20.csproj", "{CDAC0A9E-9F00-4819-9EF3-8B5EF0F7E703}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityFrameworkCore.IndexAttribute.Test.EF21", "EntityFrameworkCore.IndexAttribute.Test.EF21\EntityFrameworkCore.IndexAttribute.Test.EF21.csproj", "{38A622BE-3E2B-4E30-8E40-BA5EFCF956DF}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityFrameworkCore.IndexAttribute.Test.EF22", "EntityFrameworkCore.IndexAttribute.Test.EF22\EntityFrameworkCore.IndexAttribute.Test.EF22.csproj", "{351B5840-DF4F-4BD1-BCD7-8E3E282711F1}"
-EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "EntityFrameworkCore.IndexAttribute.Test", "EntityFrameworkCore.IndexAttribute.Test\EntityFrameworkCore.IndexAttribute.Test.shproj", "{58B58CBB-EE83-4A43-8C69-A02204C84F57}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkCore.IndexAttribute.SqlServer", "EntityFrameworkCore.IndexAttribute.SqlServer\EntityFrameworkCore.IndexAttribute.SqlServer.csproj", "{04DCC94C-58BF-4919-9BBE-C53FD3212E57}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityFrameworkCore.IndexAttribute.SqlServer", "EntityFrameworkCore.IndexAttribute.SqlServer\EntityFrameworkCore.IndexAttribute.SqlServer.csproj", "{04DCC94C-58BF-4919-9BBE-C53FD3212E57}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityFrameworkCore.IndexAttribute.Test.EF30", "EntityFrameworkCore.IndexAttribute.Test.EF30\EntityFrameworkCore.IndexAttribute.Test.EF30.csproj", "{66291784-E6F6-42CD-89C0-3A042CDA5B9C}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -40,22 +36,14 @@ Global
 		{2C15BC9E-DB1D-4DC3-A818-F9AF0A6ADDD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C15BC9E-DB1D-4DC3-A818-F9AF0A6ADDD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C15BC9E-DB1D-4DC3-A818-F9AF0A6ADDD2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CDAC0A9E-9F00-4819-9EF3-8B5EF0F7E703}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CDAC0A9E-9F00-4819-9EF3-8B5EF0F7E703}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CDAC0A9E-9F00-4819-9EF3-8B5EF0F7E703}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CDAC0A9E-9F00-4819-9EF3-8B5EF0F7E703}.Release|Any CPU.Build.0 = Release|Any CPU
-		{38A622BE-3E2B-4E30-8E40-BA5EFCF956DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{38A622BE-3E2B-4E30-8E40-BA5EFCF956DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{38A622BE-3E2B-4E30-8E40-BA5EFCF956DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{38A622BE-3E2B-4E30-8E40-BA5EFCF956DF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{351B5840-DF4F-4BD1-BCD7-8E3E282711F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{351B5840-DF4F-4BD1-BCD7-8E3E282711F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{351B5840-DF4F-4BD1-BCD7-8E3E282711F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{351B5840-DF4F-4BD1-BCD7-8E3E282711F1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{04DCC94C-58BF-4919-9BBE-C53FD3212E57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{04DCC94C-58BF-4919-9BBE-C53FD3212E57}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{04DCC94C-58BF-4919-9BBE-C53FD3212E57}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{04DCC94C-58BF-4919-9BBE-C53FD3212E57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66291784-E6F6-42CD-89C0-3A042CDA5B9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66291784-E6F6-42CD-89C0-3A042CDA5B9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66291784-E6F6-42CD-89C0-3A042CDA5B9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66291784-E6F6-42CD-89C0-3A042CDA5B9C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

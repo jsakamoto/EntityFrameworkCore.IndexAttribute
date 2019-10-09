@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using EntityFrameworkCore.IndexAttributeTest.Models;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Debug;
@@ -22,10 +22,12 @@ namespace EntityFrameworkCore.IndexAttributeTest
                 cmd.ExecuteNonQuery();
             }
 
-            var loggerFactory = new LoggerFactory(new[] {
-                new DebugLoggerProvider((category, level)
-                    => category == DbLoggerCategory.Database.Command.Name && level == LogLevel.Information)
-            });
+            var loggerFactory = new LoggerFactory(
+                new[] { new DebugLoggerProvider() },
+                new LoggerFilterOptions
+                {
+                    Rules = { new LoggerFilterRule("Debug", DbLoggerCategory.Database.Command.Name, LogLevel.Information, (n, c, l) => true) }
+                });
 
             var connStr = $"Server=(localdb)\\mssqllocaldb;Database={dbName};Trusted_Connection=True;MultipleActiveResultSets=True;";
             var option = new DbContextOptionsBuilder<MyDbContextBase>()

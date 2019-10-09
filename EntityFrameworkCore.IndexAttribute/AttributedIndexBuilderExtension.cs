@@ -97,7 +97,7 @@ namespace Toolbelt.ComponentModel.DataAnnotations
         private static void BuildIndex(
             AttributedIndexBuilderOptions options,
             EntityTypeBuilder builder1,
-            ReferenceOwnershipBuilder builder2,
+            OwnedNavigationBuilder builder2,
             IndexBuilderArgument builderArg,
             Action<IndexBuilder, IndexBuilderArgument> postProcess)
         {
@@ -116,7 +116,7 @@ namespace Toolbelt.ComponentModel.DataAnnotations
             postProcess?.Invoke(indexBuilder, builderArg);
         }
 
-        private static void BuildPrimaryKey(EntityTypeBuilder builder1, ReferenceOwnershipBuilder builder2, IndexBuilderArgument builderArg, Action<KeyBuilder, IndexBuilderArgument> postProcess)
+        private static void BuildPrimaryKey(EntityTypeBuilder builder1, OwnedNavigationBuilder builder2, IndexBuilderArgument builderArg, Action<KeyBuilder, IndexBuilderArgument> postProcess)
         {
             if (builder1 == null) throw new NotSupportedException("Annotate primary key to owned entity isn't supported. If you want to do it, you have to implement it by Fluent API in DbContext.OnModelCreating() with EF Core v.2.2 or after.");
 

@@ -23,6 +23,13 @@ Therefore, you should consider well before use this package.
 > dotnet add package Toolbelt.EntityFrameworkCore.IndexAttribute
 ```
 
+### Supported Versions
+
+EF Core version | This package version
+----------------|-------------------------
+v.3.0           | v.3.0
+v.2.0, 2.1, 2.2 | v.2.0.x
+
 If you use SQL Server and "IsCLustered=true" feature, you need to add [`Toolbelt.EntityFrameworkCore.IndexAttribute.SqlServer`](https://www.nuget.org/packages/Toolbelt.EntityFrameworkCore.IndexAttribute.SqlServer/) package, instead.
 
 ```shell
@@ -166,6 +173,7 @@ Please visit document site of EF 6.x and `[Index]` attribute for EF 6.x.
 
 ### Toolbelt.EntityFrameworkCore.IndexAttribute
 
+- **v.3.0.0** - BREAKING CHANGE: supports EntityFramework Core v.3.0
 - **v.2.1.0** - Add support `[PrimaryKey]` attribute.
 - **v.2.0.1** - Fix: Doesn't work with owned types on EF Core v.2.1, v.2.2.
 - **v.2.0.0** - Splitted [Index] attribute class to another package for detach the dependencies of EF Core from [Index] attribute.
@@ -174,6 +182,7 @@ Please visit document site of EF 6.x and `[Index]` attribute for EF 6.x.
 
 ### Toolbelt.EntityFrameworkCore.IndexAttribute.SqlServer
 
+- **v.3.0.0** - BREAKING CHANGE: supports EntityFramework Core v.3.0
 - **v.1.0.0** - 1st release for support "IsClustered" property of `[Index]` attribue on a SQL Server connection.
 
 

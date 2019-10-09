@@ -15,11 +15,11 @@ namespace Toolbelt.ComponentModel.DataAnnotations
             modelBuilder.BuildIndexesFromAnnotations(
                 postProcessForIndex: (builder, arg) =>
                 {
-                    builder.ForSqlServerIsClustered(arg.IsClustered);
+                    builder.IsClustered(arg.IsClustered);
                 },
                 postProcessForPrimaryKey: (builder, arg) =>
                 {
-                    builder.ForSqlServerIsClustered(arg.IsClustered);
+                    builder.IsClustered(arg.IsClustered);
                 },
                 configure: options =>
                 {
