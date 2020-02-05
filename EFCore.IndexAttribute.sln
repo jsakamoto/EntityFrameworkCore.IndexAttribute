@@ -19,6 +19,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore.IndexAttribute.SqlSe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore.IndexAttribute.Test.EF30", "EFCore.IndexAttribute.Test.EF30\EFCore.IndexAttribute.Test.EF30.csproj", "{66291784-E6F6-42CD-89C0-3A042CDA5B9C}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore.IndexAttribute.Test.EF31", "EFCore.IndexAttribute.Test.EF31\EFCore.IndexAttribute.Test.EF31.csproj", "{581DE162-8EA0-46B8-923B-331E3D7F346B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore.IndexAttribute.Test.EF311", "EFCore.IndexAttribute.Test.EF311\EFCore.IndexAttribute.Test.EF311.csproj", "{FEA15466-22F6-4A86-AFC3-66523C59FDB9}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		EFCore.IndexAttribute.Test\EFCore.IndexAttribute.Test.projitems*{58b58cbb-ee83-4a43-8c69-a02204c84f57}*SharedItemsImports = 13
@@ -44,6 +48,14 @@ Global
 		{66291784-E6F6-42CD-89C0-3A042CDA5B9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{66291784-E6F6-42CD-89C0-3A042CDA5B9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{66291784-E6F6-42CD-89C0-3A042CDA5B9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{581DE162-8EA0-46B8-923B-331E3D7F346B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{581DE162-8EA0-46B8-923B-331E3D7F346B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{581DE162-8EA0-46B8-923B-331E3D7F346B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{581DE162-8EA0-46B8-923B-331E3D7F346B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEA15466-22F6-4A86-AFC3-66523C59FDB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEA15466-22F6-4A86-AFC3-66523C59FDB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEA15466-22F6-4A86-AFC3-66523C59FDB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEA15466-22F6-4A86-AFC3-66523C59FDB9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
