@@ -5,7 +5,7 @@
     <AssemblyName>Toolbelt.EntityFrameworkCore.IndexAttribute.SqlServer</AssemblyName>
     <RootNamespace>Toolbelt.ComponentModel.DataAnnotations.Schema</RootNamespace>
     <PackageId>Toolbelt.EntityFrameworkCore.IndexAttribute.SqlServer</PackageId>
-    <Version>3.1.0</Version>
+    <Version>3.2.0</Version>
     <Authors>J.Sakamoto</Authors>
     <Company>J.Sakamoto</Company>
     <Product>IndexAttribute and model builder extension for EntityFrameworkCore</Product>
@@ -18,7 +18,9 @@ You should consider well before use this package.</Description>
     <PackageLicenseUrl></PackageLicenseUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/jsakamoto/EntityFrameworkCore.IndexAttribute</PackageProjectUrl>
-    <PackageReleaseNotes>v.3.1.0
+    <PackageReleaseNotes>v.3.2.0
+- Add support for "Includes" property of [Index] attribute
+v.3.1.0
 - Supports EntityFramework Core v.3.1.1
 - Revert back to .NET Standard 2.0
 v.3.0.0
@@ -32,7 +34,7 @@ v.1.0.0
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Toolbelt.EntityFrameworkCore.IndexAttribute" Version="3.1.0" />
+    <PackageReference Include="Toolbelt.EntityFrameworkCore.IndexAttribute" Version="3.2.0" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.1'">

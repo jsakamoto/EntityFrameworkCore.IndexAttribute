@@ -10,7 +10,7 @@ namespace EntityFrameworkCore.IndexAttributeTest.Models
 
         public string TownCity { get; set; }
 
-        [Index("IX_Country")]
+        [Index("IX_Country", Includes = new[] { nameof(ZipPostCode), nameof(TownCity) })]
         public string Country { get; set; }
     }
 }

@@ -30,6 +30,11 @@ namespace Toolbelt.ComponentModel.DataAnnotations.Schema
         public bool IsClustered { get; set; }
 
         /// <summary>
+        /// Gets or sets an array of name of properties for inclusion into this index.
+        /// </summary>
+        public string[] Includes { get; set; } = new string[] { };
+
+        /// <summary>
         /// Initializes a new IndexAttribute instance for an index that will be named by convention and has no column order, uniqueness specified.
         /// </summary>
         public IndexAttribute() : this("", -1)

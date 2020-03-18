@@ -16,6 +16,7 @@ namespace Toolbelt.ComponentModel.DataAnnotations
                 postProcessForIndex: (builder, arg) =>
                 {
                     builder.IsClustered(arg.IsClustered);
+                    builder.IncludeProperties(arg.Includes);
                 },
                 postProcessForPrimaryKey: (builder, arg) =>
                 {
@@ -25,6 +26,7 @@ namespace Toolbelt.ComponentModel.DataAnnotations
                 {
                     configure?.Invoke(options);
                     options.SuppressNotSupportedException.IsClustered = true;
+                    options.SuppressNotSupportedException.Includes = true;
                 });
         }
     }

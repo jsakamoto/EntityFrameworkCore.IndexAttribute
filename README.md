@@ -27,11 +27,11 @@ Therefore, you should consider well before use this package.
 
 EF Core version | This package version
 ----------------|-------------------------
-v.3.1           | v.3.1
+v.3.1, v.5.0 Prev1  | v.3.1, v.3.2
 v.3.0           | v.3.0, v.3.1
 v.2.0, 2.1, 2.2 | v.2.0.x
 
-If you use SQL Server and "IsCLustered=true" feature, you need to add [`Toolbelt.EntityFrameworkCore.IndexAttribute.SqlServer`](https://www.nuget.org/packages/Toolbelt.EntityFrameworkCore.IndexAttribute.SqlServer/) package, instead.
+If you want to use `IsClustered=true` and/or `Includes` index features on a SQL Server, you have to add [`Toolbelt.EntityFrameworkCore.IndexAttribute.SqlServer`](https://www.nuget.org/packages/Toolbelt.EntityFrameworkCore.IndexAttribute.SqlServer/) package to your project, instead.
 
 ```shell
 > dotnet add package Toolbelt.EntityFrameworkCore.IndexAttribute.SqlServer
@@ -71,7 +71,7 @@ public class MyDbContext : DbContext
 }
 ```
 
-If you use SQL Server and "IsCLustered=true" feature, you need to call `BuildIndexesFromAnnotationsForSqlServer()` extension method instead of `BuildIndexesFromAnnotations()` extension method.
+If you use SQL Server and `IsClustered=true` and/or `Includes = new[]{"Foo", "Bar"}` features, you need to call `BuildIndexesFromAnnotationsForSqlServer()` extension method instead of `BuildIndexesFromAnnotations()` extension method.
 
 ```csharp
     ...
@@ -94,7 +94,7 @@ After doing that, the database which created by EF Core, contains indexes that a
 
 ## Appendix A - Suppress "NotSupportedException"
 
-You will run into "NotSupportedException" when you call `BuildIndexesFromAnnotations()` with the model which is annotated with the `[Index]` attribute that's "IsClustered" property is true.
+You will run into "NotSupportedException" when you call `BuildIndexesFromAnnotations()` with the model which is annotated with the `[Index]` attribute that's "IsClustered" property is true, or "Includes" property is not empty.
 
 If you have to call `BuildIndexesFromAnnotations()` in this case (for example, share the model for different Database products), you can suppress this behavior with configuration, like this.
 
@@ -104,9 +104,10 @@ If you have to call `BuildIndexesFromAnnotations()` in this case (for example, s
   {
     base.OnModelCreating(modelBuilder);
 
-    // Suppress "NotSupportedException" for "IsClustered" feature.
+    // Suppress "NotSupportedException" for "IsClustered" and "Includes" feature.
     modelBuilder.BuildIndexesFromAnnotations(options => {
       options.SuppressNotSupportedException.IsClustered = true;
+      options.SuppressNotSupportedException.Includes = true;
     });
   }
 }
@@ -167,6 +168,7 @@ Please visit document site of EF 6.x and `[Index]` attribute for EF 6.x.
 
 ### Toolbelt.EntityFrameworkCore.IndexAttribute.Attibute
 
+- **v.1.2.0** - Add "Includes" index property
 - **v.1.1.0**
   - Add "IsClustered" index property
   - Add "PrimaryKey" attribute class
@@ -174,6 +176,7 @@ Please visit document site of EF 6.x and `[Index]` attribute for EF 6.x.
 
 ### Toolbelt.EntityFrameworkCore.IndexAttribute
 
+- **v.3.2.0** - Add support for "Includes" property of [Index] attribute
 - **v.3.1.0**
     - Supports EntityFramework Core v.3.1.0
     - Revert back to .NET Standard 2.0
@@ -186,11 +189,12 @@ Please visit document site of EF 6.x and `[Index]` attribute for EF 6.x.
 
 ### Toolbelt.EntityFrameworkCore.IndexAttribute.SqlServer
 
+- **v.3.2.0** - Add support for "Includes" property of [Index] attribute
 - **v.3.1.0**
     - Supports EntityFramework Core v.3.1.0
     - Revert back to .NET Standard 2.0
 - **v.3.0.0** - BREAKING CHANGE: supports EntityFramework Core v.3.0
-- **v.1.0.0** - 1st release for support "IsClustered" property of `[Index]` attribue on a SQL Server connection.
+- **v.1.0.0** - 1st release for support "IsClustered" property of `[Index]` attribute on a SQL Server connection.
 
 
 ## License

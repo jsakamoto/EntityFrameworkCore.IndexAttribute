@@ -12,7 +12,11 @@ namespace EntityFrameworkCore.IndexAttributeTest.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.BuildIndexesFromAnnotations(options => options.SuppressNotSupportedException.IsClustered = true);
+            modelBuilder.BuildIndexesFromAnnotations(options =>
+            {
+                options.SuppressNotSupportedException.IsClustered = true;
+                options.SuppressNotSupportedException.Includes = true;
+            });
         }
     }
 }

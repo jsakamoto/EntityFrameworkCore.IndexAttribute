@@ -14,6 +14,11 @@
             /// "IsClustered" porperty of [Index] attribute.
             /// </summary>
             public bool IsClustered { get; set; }
+
+            /// <summary>
+            /// "Includes" porperty of [Index] attribute.
+            /// </summary>
+            public bool Includes { get; set; }
         }
 
         /// <summary>

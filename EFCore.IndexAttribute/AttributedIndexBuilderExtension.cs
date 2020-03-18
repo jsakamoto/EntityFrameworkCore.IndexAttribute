@@ -20,12 +20,15 @@ namespace Toolbelt.ComponentModel.DataAnnotations
 
             public bool IsClustered { get; }
 
+            public string[] Includes { get; }
+
             public IndexBuilderArgument(IndexAttribute indexAttr, params string[] propertyNames)
             {
                 this.PropertyNames = propertyNames;
                 this.IndexName = indexAttr.Name;
                 this.IsUnique = indexAttr.IsUnique;
                 this.IsClustered = indexAttr.IsClustered;
+                this.Includes = indexAttr.Includes ?? new string[0];
             }
 
             public IndexBuilderArgument(PrimaryKeyAttribute primaryKeyAttr, params string[] propertyNames)
@@ -106,6 +109,12 @@ namespace Toolbelt.ComponentModel.DataAnnotations
                     "\"IsClustered=true\" of [Index] attribute is not supported.\n" +
                     "If you want to use \"IsClustered=true\", you need to call \"BuildIndexesFromAnnotationsForSqlServer()\" (in the Toolbelt.EntityFrameworkCore.IndexAttribute.SqlServer package) instead of \"BuildIndexesFromAnnotations()\", for a SQL Server connection.\n" +
                     "You can also suppress this exception by calling like \"BuildIndexesFromAnnotations(options => options.SupressUnsupportedException.IsClustered = true)\"");
+
+            if (!options.SuppressNotSupportedException.Includes && (builderArg.Includes ?? new string[0]).Any())
+                throw new NotSupportedException(
+                    "\"Includes\" of [Index] attribute is not supported.\n" +
+                    "If you want to use \"Includes\", you need to call \"BuildIndexesFromAnnotationsForSqlServer()\" (in the Toolbelt.EntityFrameworkCore.IndexAttribute.SqlServer package) instead of \"BuildIndexesFromAnnotations()\", for a SQL Server connection.\n" +
+                    "You can also suppress this exception by calling like \"BuildIndexesFromAnnotations(options => options.SupressUnsupportedException.Includes = true)\"");
 
             var indexBuilder = builder1?.HasIndex(builderArg.PropertyNames) ?? builder2.HasIndex(builderArg.PropertyNames);
             indexBuilder.IsUnique(builderArg.IsUnique);
