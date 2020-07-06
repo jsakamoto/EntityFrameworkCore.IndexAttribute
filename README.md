@@ -164,38 +164,11 @@ Please visit document site of EF 6.x and `[Index]` attribute for EF 6.x.
 
 `[Index]` attribute with `IsClustered=true` can apply only not owned entity types.
 
-## Release Note
+## Release Notes
 
-### Toolbelt.EntityFrameworkCore.IndexAttribute.Attibute
-
-- **v.1.2.0** - Add "Includes" index property
-- **v.1.1.0**
-  - Add "IsClustered" index property
-  - Add "PrimaryKey" attribute class
-- **v.1.0.0** - 1st release.
-
-### Toolbelt.EntityFrameworkCore.IndexAttribute
-
-- **v.3.2.0** - Add support for "Includes" property of [Index] attribute
-- **v.3.1.0**
-    - Supports EntityFramework Core v.3.1.0
-    - Revert back to .NET Standard 2.0
-- **v.3.0.0** - BREAKING CHANGE: supports EntityFramework Core v.3.0
-- **v.2.1.0** - Add support `[PrimaryKey]` attribute.
-- **v.2.0.1** - Fix: Doesn't work with owned types on EF Core v.2.1, v.2.2.
-- **v.2.0.0** - Splitted [Index] attribute class to another package for detach the dependencies of EF Core from [Index] attribute.
-- **v.1.0.2** - Added support for Owned Entity Types.
-- **v.1.0.0** - 1st release.
-
-### Toolbelt.EntityFrameworkCore.IndexAttribute.SqlServer
-
-- **v.3.2.0** - Add support for "Includes" property of [Index] attribute
-- **v.3.1.0**
-    - Supports EntityFramework Core v.3.1.0
-    - Revert back to .NET Standard 2.0
-- **v.3.0.0** - BREAKING CHANGE: supports EntityFramework Core v.3.0
-- **v.1.0.0** - 1st release for support "IsClustered" property of `[Index]` attribute on a SQL Server connection.
-
+- [Toolbelt.EntityFrameworkCore.IndexAttribute.Attibute - Release Notes](https://github.com/jsakamoto/EntityFrameworkCore.IndexAttribute/blob/master/EFCore.IndexAttribute.Attribute/RELEASE-NOTES.txt)
+- [Toolbelt.EntityFrameworkCore.IndexAttribute - Release Notes](https://github.com/jsakamoto/EntityFrameworkCore.IndexAttribute/blob/master/EFCore.IndexAttribute/RELEASE-NOTES.txt)
+- [Toolbelt.EntityFrameworkCore.IndexAttribute.SqlServer - Release Notes](https://github.com/jsakamoto/EntityFrameworkCore.IndexAttribute/blob/master/EFCore.IndexAttribute.SqlServer/RELEASE-NOTES.txt)
 
 ## License
 
