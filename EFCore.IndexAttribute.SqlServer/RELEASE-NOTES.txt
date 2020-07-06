@@ -1,0 +1,12 @@
+﻿v.3.2.0
+- Add support for "Includes" property of [Index] attribute
+
+v.3.1.0
+- Supports EntityFramework Core v.3.1.1
+- Revert back to .NET Standard 2.0
+
+v.3.0.0
+- BREAKING CHANGE: supports EntityFramework Core v.3.0
+
+v.1.0.0
+- 1st release.

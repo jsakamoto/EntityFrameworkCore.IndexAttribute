@@ -1,0 +1,9 @@
+﻿v.1.2.0
+- Add "Includes" index property
+
+v.1.1.0
+- Add "IsClustered" index property
+- Add "PrimaryKey" attribute class
+
+v.1.0.0
+- 1st release.

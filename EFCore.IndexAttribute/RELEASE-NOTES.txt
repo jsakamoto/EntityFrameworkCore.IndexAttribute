@@ -1,0 +1,24 @@
+﻿v.3.2.0
+- Add support for "Includes" property of [Index] attribute
+
+v.3.1.0
+- Supports EntityFramework Core v.3.1.0
+- Revert back to .NET Standard 2.0
+
+v.3.0.0
+- BREAKING CHANGE: supports EntityFramework Core v.3.0
+
+v.2.1.0
+- Add support [PrimaryKey] attribute.
+
+v.2.0.1
+- Fix: Doesn't work with owned types on EF Core v.2.1, v.2.2.
+
+v.2.0.0
+- Splitted [Index] attribute class to another package for detach the dependencies of EF Core from [Index] attribute.
+
+v.1.0.2
+- Added support for Owned Entity Types.
+
+v.1.0.0
+- 1st release.

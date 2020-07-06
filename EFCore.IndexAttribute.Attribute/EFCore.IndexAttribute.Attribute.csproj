@@ -8,8 +8,7 @@
     <Authors>J.Sakamoto</Authors>
     <Company>J.Sakamoto</Company>
     <Product>IndexAttribute for EntityFrameworkCore</Product>
-    <Description>Revival of [Index] attribute for EF Core.
-This package also provides [PrimaryKey] attribute.</Description>
+    <Description>Revival of [Index] attribute for EF Core.&#xD;&#xA;This package also provides [PrimaryKey] attribute.</Description>
     <Copyright>Copyright 2017-2020 J.Sakamoto, MIT License</Copyright>
     <PackageLicenseUrl></PackageLicenseUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -22,14 +21,16 @@ This package also provides [PrimaryKey] attribute.</Description>
   <PropertyGroup>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
     <NoWarn>$(NoWarn);1591</NoWarn>
-    <PackageReleaseNotes>v.1.2.0
-- Add "Includes" index property
-v.1.1.0
-- Add "IsClustered" index property
-- Add "PrimaryKey" attribute class
-v.1.0.0
-- 1st release.
-</PackageReleaseNotes>
+    <PackageReleaseNotes>(Please write the package release notes in "RELEASE-NOTES.txt".)</PackageReleaseNotes>
   </PropertyGroup>
+
+  <Target Name="PreparePackageReleaseNoteFromFile" BeforeTargets="GenerateNuspec">
+    <ReadLinesFromFile File="RELEASE-NOTES.txt" >
+      <Output TaskParameter="Lines" ItemName="ReleaseNoteLines"/>
+    </ReadLinesFromFile>
+    <PropertyGroup>
+      <PackageReleaseNotes>@(ReleaseNoteLines, '%0a')</PackageReleaseNotes>
+    </PropertyGroup>
+  </Target>
 
 </Project>
