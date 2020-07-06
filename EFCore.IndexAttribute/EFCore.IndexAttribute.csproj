@@ -25,6 +25,17 @@
     <NoWarn>$(NoWarn);1591</NoWarn>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <PackageIcon>nupkg-icon.png</PackageIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="..\.assets\nupkg-icon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+      <Visible>false</Visible>
+    </None>
+  </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="Toolbelt.EntityFrameworkCore.AnnotationBasedModelBuilder" Version="3.1.0" />
     <PackageReference Include="Toolbelt.EntityFrameworkCore.IndexAttribute.Attribute" Version="1.2.0" />

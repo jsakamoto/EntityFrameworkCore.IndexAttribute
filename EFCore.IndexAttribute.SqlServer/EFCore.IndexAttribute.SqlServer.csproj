@@ -20,6 +20,17 @@
     <PackageOutputPath>..\dist\</PackageOutputPath>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <PackageIcon>nupkg-icon.png</PackageIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="..\.assets\nupkg-icon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+      <Visible>false</Visible>
+    </None>
+  </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="Toolbelt.EntityFrameworkCore.IndexAttribute" Version="3.2.0" />
   </ItemGroup>
