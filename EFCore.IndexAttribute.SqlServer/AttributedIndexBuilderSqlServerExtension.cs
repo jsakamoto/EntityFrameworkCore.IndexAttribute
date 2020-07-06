@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.EntityFrameworkCore;
 
 namespace Toolbelt.ComponentModel.DataAnnotations
@@ -16,7 +17,8 @@ namespace Toolbelt.ComponentModel.DataAnnotations
                 postProcessForIndex: (builder, arg) =>
                 {
                     builder.IsClustered(arg.IsClustered);
-                    builder.IncludeProperties(arg.Includes);
+                    if (arg.Includes != null && arg.Includes.Any())
+                        builder.IncludeProperties(arg.Includes);
                 },
                 postProcessForPrimaryKey: (builder, arg) =>
                 {
