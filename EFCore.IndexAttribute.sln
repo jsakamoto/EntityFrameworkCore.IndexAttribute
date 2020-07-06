@@ -23,7 +23,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore.IndexAttribute.Test.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore.IndexAttribute.Test.EF311", "EFCore.IndexAttribute.Test.EF311\EFCore.IndexAttribute.Test.EF311.csproj", "{FEA15466-22F6-4A86-AFC3-66523C59FDB9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCore.IndexAttribute.Test.EF50", "EFCore.IndexAttribute.Test.EF50\EFCore.IndexAttribute.Test.EF50.csproj", "{7182976F-F643-4BFC-9FDB-D73333F958BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore.IndexAttribute.Test.EF50", "EFCore.IndexAttribute.Test.EF50\EFCore.IndexAttribute.Test.EF50.csproj", "{7182976F-F643-4BFC-9FDB-D73333F958BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCore.IndexAttribute.Test.MigrationTest", "EFCore.IndexAttribute.Test.MigrationTest\EFCore.IndexAttribute.Test.MigrationTest.csproj", "{F9437EB1-F80A-4D52-93DC-822929A9E874}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -66,6 +68,10 @@ Global
 		{7182976F-F643-4BFC-9FDB-D73333F958BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7182976F-F643-4BFC-9FDB-D73333F958BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7182976F-F643-4BFC-9FDB-D73333F958BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9437EB1-F80A-4D52-93DC-822929A9E874}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9437EB1-F80A-4D52-93DC-822929A9E874}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9437EB1-F80A-4D52-93DC-822929A9E874}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9437EB1-F80A-4D52-93DC-822929A9E874}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
