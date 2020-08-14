@@ -1,19 +1,19 @@
-# IndexAttribute for EntityFramework Core  
+# IndexColumnAttribute for EntityFramework Core  
 [![Build status](https://ci.appveyor.com/api/projects/status/dv0et0b80da5mwys?svg=true)](https://ci.appveyor.com/project/jsakamoto/entityframeworkcore-indexattribute) [![NuGet Package](https://img.shields.io/nuget/v/Toolbelt.EntityFrameworkCore.IndexAttribute.svg)](https://www.nuget.org/packages/Toolbelt.EntityFrameworkCore.IndexAttribute/)
 
 ## What's this?
 
-Revival of `[Index]` attribute for EF Core. (with extension for model building.)
-
+The `[IndexColumn]` attribute that is the revival of `[Index]` attribute for EF Core. (with extension for model building.)
 
 ### Attention
 
-EF Core team said:
+EF Core also includes the `[Index]` attribute officially, after ver.5.0.
 
-> _"We didn't bring this (= IndexAttribute) over from EF6.x **because it had a lot of issues**"_  
-> (https://github.com/aspnet/EntityFrameworkCore/issues/4050)
+However, I'm going to continue improving and maintaining these libraries, because these libraries still have advantages as below.
 
-Therefore, you should consider well before use this package.
+- You can still create indexes by data annotations even if you have to use **a lower version of EF Core**.
+- You can create indexes with **"included columns"** for SQL Server.
+- You can create a **clustered index** (This means you can also create a non-clustered primary key index).
 
 ## How to use?
 
@@ -27,8 +27,9 @@ Therefore, you should consider well before use this package.
 
 EF Core version | This package version
 ----------------|-------------------------
-v.3.1, v.5.0 Prev1  | v.3.1, v.3.2
-v.3.0           | v.3.0, v.3.1
+v.5.0 (Preview) | v.3.1, v.3.2, **v.5.0 (Recommended)**
+v.3.1           | v.3.1, v.3.2, v.5.0
+v.3.0           | v.3.0, v.3.1, v.3.2, v.5.0
 v.2.0, 2.1, 2.2 | v.2.0.x
 
 If you want to use `IsClustered=true` and/or `Includes` index features on a SQL Server, you have to add [`Toolbelt.EntityFrameworkCore.IndexAttribute.SqlServer`](https://www.nuget.org/packages/Toolbelt.EntityFrameworkCore.IndexAttribute.SqlServer/) package to your project, instead.
@@ -37,16 +38,18 @@ If you want to use `IsClustered=true` and/or `Includes` index features on a SQL 
 > dotnet add package Toolbelt.EntityFrameworkCore.IndexAttribute.SqlServer
 ```
 
-2. Annotate your model with `[Index]` attribute that lives in `Toolbelt.ComponentModel.DataAnnotations.Schema` namespace.
+2. Annotate your model with `[IndexColumn]` attribute that lives in `Toolbelt.ComponentModel.DataAnnotations.Schema.V5` namespace.
+
+_**Notice**_ - The attribute name is **`[IndexColumn]`**, is not `[Index]` (the attribute name `[Index]` is used by EFocre v.5.0).
 
 ```csharp
-using Toolbelt.ComponentModel.DataAnnotations.Schema;
+using Toolbelt.ComponentModel.DataAnnotations.Schema.V5;
 
 public class Person
 {
     public int Id { get; set; }
 
-    [Index] // <- Here!
+    [IndexColumn] // <- Here!
     public string Name { get; set; }
 }
 ```
@@ -88,13 +91,13 @@ If you use SQL Server and `IsClustered=true` and/or `Includes = new[]{"Foo", "Ba
 
 That's all!
 
-`BuildIndexesFromAnnotations()` (or, `BuildIndexesFromAnnotationsForSqlServer()`) extension method scans the DbContext with .NET Reflection technology, and detects `[Index]` attributes, then build models related to indexing.
+`BuildIndexesFromAnnotations()` (or, `BuildIndexesFromAnnotationsForSqlServer()`) extension method scans the DbContext with .NET Reflection technology, and detects `[IndexColumn]` attributes, then build models related to indexing.
 
-After doing that, the database which created by EF Core, contains indexes that are specified by `[Index]` attributes.
+After doing that, the database which created by EF Core, contains indexes that are specified by `[IndexColumn]` attributes.
 
 ## Appendix A - Suppress "NotSupportedException"
 
-You will run into "NotSupportedException" when you call `BuildIndexesFromAnnotations()` with the model which is annotated with the `[Index]` attribute that's "IsClustered" property is true, or "Includes" property is not empty.
+You will run into "NotSupportedException" when you call `BuildIndexesFromAnnotations()` with the model which is annotated with the `[IndexColumn]` attribute that's "IsClustered" property is true, or "Includes" property is not empty.
 
 If you have to call `BuildIndexesFromAnnotations()` in this case (for example, share the model for different Database products), you can suppress this behavior with configuration, like this.
 
@@ -121,7 +124,7 @@ If you annotate the model with "IsClustered=true" index simply like this,
 public class Employee {
   public int Id { get; set; }
 
-  [Index(IsClustered = true)]
+  [IndexColumn(IsClustered = true)]
   public string EmployeeCode { get; set; }
 }
 ```
@@ -141,15 +144,104 @@ public class Employee {
   [PrimaryKey(IsClustered = false)] // <- Add this line!
   public int Id { get; set; }
 
-  [Index(IsClustered = true)]
+  [IndexColumn(IsClustered = true)]
   public string EmployeeCode { get; set; }
 }
 ```
 
 ## Appendix C -  If you want to use only "IndexAttribute" without any dependencies...
 
-If you want to use only "IndexAttribute" class without any dependencies, you can use [Toolbelt.EntityFrameworkCore.IndexAttribute.Attribute](https://www.nuget.org/packages/Toolbelt.EntityFrameworkCore.IndexAttribute.Attribute) NuGet package.
+If you want to use only "IndexColumnAttribute" class without any dependencies, you can use [Toolbelt.EntityFrameworkCore.IndexAttribute.Attribute](https://www.nuget.org/packages/Toolbelt.EntityFrameworkCore.IndexAttribute.Attribute) NuGet package.
 
+## Appendix D - Upgrade an existing project
+
+To upgrade an existing project that uses ver.3 or before to use ver.5 or later of this package:
+1. Please confirm that the version of this package you use is ver.5 or later.
+
+```
+PM> Update-Package EFCore.IndexAttribute
+```
+
+2. Remove `using Toolbelt.ComponentModel.DataAnnotations.Schema;`, and insert `using Toolbelt.ComponentModel.DataAnnotations.Schema.V5;` instead.
+
+```csharp
+...
+// 👇 Remove this line...
+// using Toolbelt.ComponentModel.DataAnnotations.Schema;
+
+// 👇 Insert this line, instead.
+using Toolbelt.ComponentModel.DataAnnotations.Schema.V5;
+...
+```
+
+3. Replace `[Index]` attribute to `[IndexColumn]` attribute.
+
+```csharp
+...
+public class Foo {
+  ...
+  // 👇 Replace [Index] to [IndexColumn]
+  [IndexColumn] 
+  public int Bar { get; set; }
+  ...
+```
+
+## Appendix E -  If you run into a compile error CS0104...
+
+If you run into a compile error CS0104 "'Index' is an ambiguous reference between 'Toolbelt.ComponentModel.DataAnnotations.Schema.IndexAttribute' and 'Microsoft.EntityFrameworkCore.IndexAttribute'" in your project that has to use the old version of this package (ver.3.x or before),
+
+```csharp
+using Microsoft.EntityFrameworkCore;
+using Toolbelt.ComponentModel.DataAnnotations.Schema;
+
+public class Foo {
+  ...
+  [Index] // 👈 CS0104 "'Index' is an ambiguous reference...
+  public int Bar { get; set; }
+}
+```
+
+you can resolve this compile error by the following workaround steps.
+
+1. Remove `using namespace` directive.
+
+```csharp
+// 👇 Remove this line...
+using Toolbelt.ComponentModel.DataAnnotations.Schema;
+```
+
+2. Insert `using alias = full qualified name` directive to add the alias of `Toolbelt.ComponentModel.DataAnnotations.Schema.IndexAttribute` class.
+
+```csharp
+// 👇 Insert this line instead to add the alias.
+using IndexColumnAttribute =
+  Toolbelt.ComponentModel.DataAnnotations.Schema.IndexAttribute;
+```
+
+
+3. Replace `[Index]` to `[IndexColumn]`.
+
+```csharp
+  ...
+  // 👇 Replace [Index] to [IndexColumn]
+  [IndexColumn] 
+  public int Bar { get; set; }
+  ...
+```
+
+Finally, the example code will be as below, and you can compile it as expected.
+
+```csharp
+using Microsoft.EntityFrameworkCore;
+using IndexColumnAttribute =
+    Toolbelt.ComponentModel.DataAnnotations.Schema.IndexAttribute;
+
+public class Foo {
+  ...
+  [IndexColumn]
+  public int Bar { get; set; }
+}
+```
 
 ## For More Detail...
 
@@ -162,7 +254,7 @@ Please visit document site of EF 6.x and `[Index]` attribute for EF 6.x.
 
 ## Limitations
 
-`[Index]` attribute with `IsClustered=true` can apply only not owned entity types.
+`[IndexColumn]` attribute with `IsClustered=true` can apply only not owned entity types.
 
 ## Release Notes
 
