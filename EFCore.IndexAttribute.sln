@@ -8,6 +8,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "README", "README", "{2DBA60A8-0009-4634-A829-31D9814922AB}"
 	ProjectSection(SolutionItems) = preProject
 		LICENSE = LICENSE
+		README-Appendix-D.md = README-Appendix-D.md
+		README-Appendix-E.md = README-Appendix-E.md
 		README.md = README.md
 	EndProjectSection
 EndProject
@@ -25,7 +27,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore.IndexAttribute.Test.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore.IndexAttribute.Test.EF50", "EFCore.IndexAttribute.Test.EF50\EFCore.IndexAttribute.Test.EF50.csproj", "{7182976F-F643-4BFC-9FDB-D73333F958BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCore.IndexAttribute.Test.MigrationTest", "EFCore.IndexAttribute.Test.MigrationTest\EFCore.IndexAttribute.Test.MigrationTest.csproj", "{F9437EB1-F80A-4D52-93DC-822929A9E874}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore.IndexAttribute.Test.MigrationTest", "EFCore.IndexAttribute.Test.MigrationTest\EFCore.IndexAttribute.Test.MigrationTest.csproj", "{F9437EB1-F80A-4D52-93DC-822929A9E874}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution

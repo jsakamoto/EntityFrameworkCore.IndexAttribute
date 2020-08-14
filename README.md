@@ -62,31 +62,31 @@ using Toolbelt.ComponentModel.DataAnnotations;
 
 public class MyDbContext : DbContext
 {
-    ...
-    // Override "OnModelCreating", ...
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        base.OnModelCreating(modelBuilder);
+  ...
+  // Override "OnModelCreating", ...
+  protected override void OnModelCreatin(ModelBuilder modelBuilder)
+  {
+    base.OnModelCreating(modelBuilder);
 
-        // .. and invoke "BuildIndexesFromAnnotations"!
-        modelBuilder.BuildIndexesFromAnnotations();
-    }
+    // .. and invoke"BuildIndexesFromAnnotations"!
+    modelBuilder.BuildIndexesFromAnnotations();
+  }
 }
 ```
 
 If you use SQL Server and `IsClustered=true` and/or `Includes = new[]{"Foo", "Bar"}` features, you need to call `BuildIndexesFromAnnotationsForSqlServer()` extension method instead of `BuildIndexesFromAnnotations()` extension method.
 
 ```csharp
-    ...
-    // Override "OnModelCreating", ...
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        base.OnModelCreating(modelBuilder);
+  ...
+  // Override "OnModelCreating", ...
+  protected override void OnModelCreatingModelBuilder modelBuilder)
+  {
+    base.OnModelCreating(modelBuilder);
 
-        // Invoke "BuildIndexesFromAnnotationsForSqlServer"
-        // instead of "BuildIndexesFromAnnotations".
-        modelBuilder.BuildIndexesFromAnnotationsForSqlServer();
-    }
+    // Invoke uildIndexesFromAnnotationsForSqlServer"
+    // instead of "BuildIndexesFromAnnotations".
+    modelBuilder.BuildIndexesFromAnnotationsForSqlServer;
+  }
 ```
 
 That's all!
@@ -155,93 +155,11 @@ If you want to use only "IndexColumnAttribute" class without any dependencies, y
 
 ## Appendix D - Upgrade an existing project
 
-To upgrade an existing project that uses ver.3 or before to use ver.5 or later of this package:
-1. Please confirm that the version of this package you use is ver.5 or later.
-
-```
-PM> Update-Package EFCore.IndexAttribute
-```
-
-2. Remove `using Toolbelt.ComponentModel.DataAnnotations.Schema;`, and insert `using Toolbelt.ComponentModel.DataAnnotations.Schema.V5;` instead.
-
-```csharp
-...
-// 👇 Remove this line...
-// using Toolbelt.ComponentModel.DataAnnotations.Schema;
-
-// 👇 Insert this line, instead.
-using Toolbelt.ComponentModel.DataAnnotations.Schema.V5;
-...
-```
-
-3. Replace `[Index]` attribute to `[IndexColumn]` attribute.
-
-```csharp
-...
-public class Foo {
-  ...
-  // 👇 Replace [Index] to [IndexColumn]
-  [IndexColumn] 
-  public int Bar { get; set; }
-  ...
-```
+For more detail on this topic, please visit [this link.](https://github.com/jsakamoto/EntityFrameworkCore.IndexAttribute/blob/master/README-Appendix-D.md)
 
 ## Appendix E -  If you run into a compile error CS0104...
 
-If you run into a compile error CS0104 "'Index' is an ambiguous reference between 'Toolbelt.ComponentModel.DataAnnotations.Schema.IndexAttribute' and 'Microsoft.EntityFrameworkCore.IndexAttribute'" in your project that has to use the old version of this package (ver.3.x or before),
-
-```csharp
-using Microsoft.EntityFrameworkCore;
-using Toolbelt.ComponentModel.DataAnnotations.Schema;
-
-public class Foo {
-  ...
-  [Index] // 👈 CS0104 "'Index' is an ambiguous reference...
-  public int Bar { get; set; }
-}
-```
-
-you can resolve this compile error by the following workaround steps.
-
-1. Remove `using namespace` directive.
-
-```csharp
-// 👇 Remove this line...
-using Toolbelt.ComponentModel.DataAnnotations.Schema;
-```
-
-2. Insert `using alias = full qualified name` directive to add the alias of `Toolbelt.ComponentModel.DataAnnotations.Schema.IndexAttribute` class.
-
-```csharp
-// 👇 Insert this line instead to add the alias.
-using IndexColumnAttribute =
-  Toolbelt.ComponentModel.DataAnnotations.Schema.IndexAttribute;
-```
-
-
-3. Replace `[Index]` to `[IndexColumn]`.
-
-```csharp
-  ...
-  // 👇 Replace [Index] to [IndexColumn]
-  [IndexColumn] 
-  public int Bar { get; set; }
-  ...
-```
-
-Finally, the example code will be as below, and you can compile it as expected.
-
-```csharp
-using Microsoft.EntityFrameworkCore;
-using IndexColumnAttribute =
-    Toolbelt.ComponentModel.DataAnnotations.Schema.IndexAttribute;
-
-public class Foo {
-  ...
-  [IndexColumn]
-  public int Bar { get; set; }
-}
-```
+For more detail on this topic, please visit [this link.](https://github.com/jsakamoto/EntityFrameworkCore.IndexAttribute/blob/master/README-Appendix-E.md)
 
 ## For More Detail...
 
@@ -258,9 +176,9 @@ Please visit document site of EF 6.x and `[Index]` attribute for EF 6.x.
 
 ## Release Notes
 
-- [Toolbelt.EntityFrameworkCore.IndexAttribute.Attibute - Release Notes](https://github.com/jsakamoto/EntityFrameworkCore.IndexAttribute/blob/master/EFCore.IndexAttribute.Attribute/RELEASE-NOTES.txt)
-- [Toolbelt.EntityFrameworkCore.IndexAttribute - Release Notes](https://github.com/jsakamoto/EntityFrameworkCore.IndexAttribute/blob/master/EFCore.IndexAttribute/RELEASE-NOTES.txt)
-- [Toolbelt.EntityFrameworkCore.IndexAttribute.SqlServer - Release Notes](https://github.com/jsakamoto/EntityFrameworkCore.IndexAttribute/blob/master/EFCore.IndexAttribute.SqlServer/RELEASE-NOTES.txt)
+- [Toolbelt.EntityFrameworkCore.IndexAttribute.Attibute](https://github.com/jsakamoto/EntityFrameworkCore.IndexAttribute/blob/master/EFCore.IndexAttribute.Attribute/RELEASE-NOTES.txt)
+- [Toolbelt.EntityFrameworkCore.IndexAttribute](https://github.com/jsakamoto/EntityFrameworkCore.IndexAttribute/blob/master/EFCore.IndexAttribute/RELEASE-NOTES.txt)
+- [Toolbelt.EntityFrameworkCore.IndexAttribute.SqlServer](https://github.com/jsakamoto/EntityFrameworkCore.IndexAttribute/blob/master/EFCore.IndexAttribute.SqlServer/RELEASE-NOTES.txt)
 
 ## License
 
