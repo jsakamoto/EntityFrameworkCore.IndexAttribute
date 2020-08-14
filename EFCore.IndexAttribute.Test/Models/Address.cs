@@ -1,4 +1,4 @@
-﻿using Toolbelt.ComponentModel.DataAnnotations.Schema;
+﻿using Toolbelt.ComponentModel.DataAnnotations.Schema.V5;
 
 namespace EntityFrameworkCore.IndexAttributeTest.Models
 {
@@ -10,7 +10,7 @@ namespace EntityFrameworkCore.IndexAttributeTest.Models
 
         public string TownCity { get; set; }
 
-        [Index("IX_Country", Includes = new[] { nameof(ZipPostCode), nameof(TownCity) })]
+        [IndexColumn("IX_Country", Includes = new[] { nameof(ZipPostCode), nameof(TownCity) })]
         public string Country { get; set; }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
-using Toolbelt.ComponentModel.DataAnnotations.Schema;
+using Toolbelt.ComponentModel.DataAnnotations.Schema.V5;
 
 namespace EntityFrameworkCore.IndexAttributeTest.Models
 {
@@ -13,11 +13,11 @@ namespace EntityFrameworkCore.IndexAttributeTest.Models
         [ForeignKey(nameof(PersonId))]
         public virtual Person Person { get; set; }
 
-        [Index]
-        [Index("Ix_Provider_and_Account", 1, IsUnique = true, IsClustered = true)]
+        [IndexColumn]
+        [IndexColumn("Ix_Provider_and_Account", 1, IsUnique = true, IsClustered = true)]
         public SNSProviders Provider { get; set; }
 
-        [Index("Ix_Provider_and_Account", 2, IsUnique = true, IsClustered = true)]
+        [IndexColumn("Ix_Provider_and_Account", 2, IsUnique = true, IsClustered = true)]
         public string AccountName { get; set; }
     }
 }

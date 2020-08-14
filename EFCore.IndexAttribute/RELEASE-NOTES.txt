@@ -1,4 +1,7 @@
-﻿v.3.2.0
+﻿v.5.0.0
+- Add [IndexColumn] attribute. And deprecate [Index] attribute in this package to avoid conflict official [Index] attribute of EFCore v5.
+
+v.3.2.0
 - Add support for "Includes" property of [Index] attribute
 
 v.3.1.0

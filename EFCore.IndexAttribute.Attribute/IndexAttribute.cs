@@ -1,11 +1,14 @@
 ﻿using System;
+using System.ComponentModel;
 using Toolbelt.ComponentModel.DataAnnotations.Schema.Internals;
 
 namespace Toolbelt.ComponentModel.DataAnnotations.Schema
 {
     /// <summary>
-    /// Represents an attribute that is placed on a property to indicate that the database column to which the property is mapped has an index.
+    /// [deprecated] Please use [IndexColumn] attribute with "using Toolbelt.ComponentModel.DataAnnotations.Schema.V5;".
     /// </summary>
+    [Obsolete("Please use [IndexColumn] attribute with \"using Toolbelt.ComponentModel.DataAnnotations.Schema.V5;\".")]
+    [EditorBrowsable(EditorBrowsableState.Never)]
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = true)]
     public class IndexAttribute : Attribute, INameAndOrder
     {

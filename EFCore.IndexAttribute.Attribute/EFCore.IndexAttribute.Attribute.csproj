@@ -4,11 +4,11 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Toolbelt.EntityFrameworkCore.IndexAttribute.Attribute</AssemblyName>
     <RootNamespace>Toolbelt.ComponentModel.DataAnnotations.Schema</RootNamespace>
-    <Version>1.2.0</Version>
+    <Version>5.0.0</Version>
     <Authors>J.Sakamoto</Authors>
     <Company>J.Sakamoto</Company>
     <Product>IndexAttribute for EntityFrameworkCore</Product>
-    <Description>Revival of [Index] attribute for EF Core.&#xD;&#xA;This package also provides [PrimaryKey] attribute.</Description>
+    <Description>The `[IndexColumn]` attribute that is the revival of `[Index]` attribute for EF Core. (with extension for model building.)&#xD;&#xA;This package also provides [PrimaryKey] attribute.</Description>
     <Copyright>Copyright 2017-2020 J.Sakamoto, MIT License</Copyright>
     <PackageLicenseUrl></PackageLicenseUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -36,8 +36,8 @@
   </ItemGroup>
 
   <Target Name="PreparePackageReleaseNoteFromFile" BeforeTargets="GenerateNuspec">
-    <ReadLinesFromFile File="RELEASE-NOTES.txt" >
-      <Output TaskParameter="Lines" ItemName="ReleaseNoteLines"/>
+    <ReadLinesFromFile File="RELEASE-NOTES.txt">
+      <Output TaskParameter="Lines" ItemName="ReleaseNoteLines" />
     </ReadLinesFromFile>
     <PropertyGroup>
       <PackageReleaseNotes>@(ReleaseNoteLines, '%0a')</PackageReleaseNotes>

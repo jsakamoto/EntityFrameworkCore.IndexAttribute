@@ -1,4 +1,4 @@
-﻿using Toolbelt.ComponentModel.DataAnnotations.Schema;
+﻿using Toolbelt.ComponentModel.DataAnnotations.Schema.V5;
 
 namespace EntityFrameworkCore.IndexAttributeTest.Models
 {
@@ -6,7 +6,7 @@ namespace EntityFrameworkCore.IndexAttributeTest.Models
     {
         public int Id { get; set; }
 
-        [Index(IsUnique = true)]
+        [IndexColumn(IsUnique = true)]
         public string Name { get; set; }
 
         public int Age { get; set; }

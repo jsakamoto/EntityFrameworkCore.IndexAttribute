@@ -1,8 +1,14 @@
 ﻿using System;
+using System.ComponentModel;
 using Toolbelt.ComponentModel.DataAnnotations.Schema.Internals;
 
 namespace Toolbelt.ComponentModel.DataAnnotations.Schema
 {
+    /// <summary>
+    /// [deprecated] Please use [PrimaryKey] attribute with "using Toolbelt.ComponentModel.DataAnnotations.Schema.V5;".
+    /// </summary>
+    [Obsolete("Please use [PrimaryKey] attribute with \"using Toolbelt.ComponentModel.DataAnnotations.Schema.V5;\".")]
+    [EditorBrowsable(EditorBrowsableState.Never)]
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
     public class PrimaryKeyAttribute : Attribute, INameAndOrder
     {

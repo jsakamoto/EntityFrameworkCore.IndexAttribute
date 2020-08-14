@@ -81,19 +81,18 @@ namespace EntityFrameworkCore.IndexAttributeTest
 
         private IEnumerable<string> CreateDbAndDumpIndexes(bool enableSqlServerFeature)
         {
-            using (var db = CreateMyDbContext(enableSqlServerFeature))
-            {
-                // Create database.
-                db.Database.OpenConnection();
-                db.Database.EnsureCreated();
+            using var db = CreateMyDbContext(enableSqlServerFeature);
 
-                try
-                {
-                    // Validate database indexes.
-                    var conn = db.Database.GetDbConnection() as SqlConnection;
-                    using (var cmd = conn.CreateCommand())
-                    {
-                        cmd.CommandText = @"
+            // Create database.
+            db.Database.OpenConnection();
+            db.Database.EnsureCreated();
+
+            try
+            {
+                // Validate database indexes.
+                var conn = db.Database.GetDbConnection() as SqlConnection;
+                using var cmd = conn.CreateCommand();
+                cmd.CommandText = @"
                         SELECT [Table] = t.name, [Index] = ind.name, [Column] = col.name, [IsUnique] = ind.is_unique, [Type] = ind.type_desc, [IsInclude] = ic.is_included_column
                         FROM sys.indexes ind 
                         INNER JOIN sys.index_columns ic ON  ind.object_id = ic.object_id and ind.index_id = ic.index_id 
@@ -101,15 +100,13 @@ namespace EntityFrameworkCore.IndexAttributeTest
                         INNER JOIN sys.tables t ON ind.object_id = t.object_id 
                         WHERE ind.is_primary_key = 0 AND t.is_ms_shipped = 0 
                         ORDER BY t.name, ind.name, ind.index_id, ic.is_included_column, ic.key_ordinal;";
-                        var dump = new List<string>();
-                        var r = cmd.ExecuteReader();
-                        try { while (r.Read()) dump.Add($"{r["Table"]}|{r["Index"]}|{r["Column"]}|{r["IsUnique"]}|{r["Type"]}|{r["IsInclude"]}"); }
-                        finally { r.Close(); }
-                        return dump;
-                    }
-                }
-                finally { db.Database.EnsureDeleted(); }
+                var dump = new List<string>();
+                var r = cmd.ExecuteReader();
+                try { while (r.Read()) dump.Add($"{r["Table"]}|{r["Index"]}|{r["Column"]}|{r["IsUnique"]}|{r["Type"]}|{r["IsInclude"]}"); }
+                finally { r.Close(); }
+                return dump;
             }
+            finally { db.Database.EnsureDeleted(); }
         }
     }
 }

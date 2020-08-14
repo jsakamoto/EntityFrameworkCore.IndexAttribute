@@ -22,7 +22,9 @@ namespace Toolbelt.ComponentModel.DataAnnotations
 
             public string[] Includes { get; }
 
+#pragma warning disable CS0618 // Type or member is obsolete
             public IndexBuilderArgument(IndexAttribute indexAttr, params string[] propertyNames)
+#pragma warning restore CS0618 // Type or member is obsolete
             {
                 this.PropertyNames = propertyNames;
                 this.IndexName = indexAttr.Name;
@@ -31,7 +33,9 @@ namespace Toolbelt.ComponentModel.DataAnnotations
                 this.Includes = indexAttr.Includes ?? new string[0];
             }
 
+#pragma warning disable CS0618 // Type or member is obsolete
             public IndexBuilderArgument(PrimaryKeyAttribute primaryKeyAttr, params string[] propertyNames)
+#pragma warning restore CS0618 // Type or member is obsolete
             {
                 this.PropertyNames = propertyNames;
                 this.IndexName = primaryKeyAttr.Name;
@@ -65,6 +69,7 @@ namespace Toolbelt.ComponentModel.DataAnnotations
             var options = new AttributedIndexBuilderOptions();
             configure?.Invoke(options);
 
+#pragma warning disable CS0618 // Type or member is obsolete
             AnnotationBasedModelBuilder.Build<IndexAttribute, IndexBuilderArgument>(
                 modelBuilder,
                 (props) => CreateBuilderArguments(props, (attr, propNames) => new IndexBuilderArgument(attr, propNames)),
@@ -73,6 +78,7 @@ namespace Toolbelt.ComponentModel.DataAnnotations
                 modelBuilder,
                 (props) => CreateBuilderArguments(props, (attr, propNames) => new IndexBuilderArgument(attr, propNames)),
                 (b1, b2, arg) => BuildPrimaryKey(b1, b2, arg, postProcessForPrimaryKey));
+#pragma warning restore CS0618 // Type or member is obsolete
         }
 
         private static IndexBuilderArgument[] CreateBuilderArguments<TAttr>(
