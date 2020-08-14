@@ -8,12 +8,14 @@ Revival of `[Index]` attribute for EF Core. (with extension for model building.)
 
 ### Attention
 
-EF Core team said:
+EF Core also includes the `[Index]` attribute officially, after ver.5.0.
 
-> _"We didn't bring this (= IndexAttribute) over from EF6.x **because it had a lot of issues**"_  
-> (https://github.com/aspnet/EntityFrameworkCore/issues/4050)
+However, I'm going to continue improving and maintaining these libraries, because these libraries still have advantages as below.
 
-Therefore, you should consider well before use this package.
+- You can still create indexes by data annotations even if you have to use **a lower version of EF Core**.
+- You can create indexes with **"included columns"** for SQL Server.
+- You can create a **clustered index** (This means you can also create a non-clustered primary key index).
+
 
 ## How to use?
 
@@ -25,11 +27,12 @@ Therefore, you should consider well before use this package.
 
 ### Supported Versions
 
-EF Core version | This package version
-----------------|-------------------------
-v.3.1, v.5.0 Prev1  | v.3.1, v.3.2
-v.3.0           | v.3.0, v.3.1
-v.2.0, 2.1, 2.2 | v.2.0.x
+EF Core version | This package version  
+----------------|-------------------------  
+v.5.0 (Preview) | v.3.1, v.3.2, **v.5.0 (recommended)**  
+v.3.1,          | v.3.1, v.3.2, v.5.0  
+v.3.0           | v.3.0, v.3.1, v.3.2, v.5.0  
+v.2.0, 2.1, 2.2 | v.2.0.x  
 
 If you want to use `IsClustered=true` and/or `Includes` index features on a SQL Server, you have to add [`Toolbelt.EntityFrameworkCore.IndexAttribute.SqlServer`](https://www.nuget.org/packages/Toolbelt.EntityFrameworkCore.IndexAttribute.SqlServer/) package to your project, instead.
 
@@ -44,10 +47,10 @@ using Toolbelt.ComponentModel.DataAnnotations.Schema;
 
 public class Person
 {
-    public int Id { get; set; }
+  public int Id { get; set; }
 
-    [Index] // <- Here!
-    public string Name { get; set; }
+  [Index] // <- Here!
+  public string Name { get; set; }
 }
 ```
 
@@ -59,31 +62,31 @@ using Toolbelt.ComponentModel.DataAnnotations;
 
 public class MyDbContext : DbContext
 {
-    ...
-    // Override "OnModelCreating", ...
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        base.OnModelCreating(modelBuilder);
+  ...
+  // Override "OnModelCreating", ...
+  protected override void OnModelCreating(ModelBuilder modelBuilder)
+  {
+    base.OnModelCreating(modelBuilder);
 
-        // .. and invoke "BuildIndexesFromAnnotations"!
-        modelBuilder.BuildIndexesFromAnnotations();
-    }
+    // .. and invoke "BuildIndexesFromAnnotations"!
+    modelBuilder.BuildIndexesFromAnnotations();
+  }
 }
 ```
 
 If you use SQL Server and `IsClustered=true` and/or `Includes = new[]{"Foo", "Bar"}` features, you need to call `BuildIndexesFromAnnotationsForSqlServer()` extension method instead of `BuildIndexesFromAnnotations()` extension method.
 
 ```csharp
-    ...
-    // Override "OnModelCreating", ...
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        base.OnModelCreating(modelBuilder);
+  ...
+  // Override "OnModelCreating", ...
+  protected override void OnModelCreating(ModelBuilder modelBuilder)
+  {
+    base.OnModelCreating(modelBuilder);
 
-        // Invoke "BuildIndexesFromAnnotationsForSqlServer"
-        // instead of "BuildIndexesFromAnnotations".
-        modelBuilder.BuildIndexesFromAnnotationsForSqlServer();
-    }
+    // Invoke "BuildIndexesFromAnnotationsForSqlServer"
+    // instead of "BuildIndexesFromAnnotations".
+    modelBuilder.BuildIndexesFromAnnotationsForSqlServer();
+  }
 ```
 
 That's all!
@@ -150,6 +153,9 @@ public class Employee {
 
 If you want to use only "IndexAttribute" class without any dependencies, you can use [Toolbelt.EntityFrameworkCore.IndexAttribute.Attribute](https://www.nuget.org/packages/Toolbelt.EntityFrameworkCore.IndexAttribute.Attribute) NuGet package.
 
+## Appendix D -  If you run into a compile error CS0104...
+
+For more detail on this topic, please visit [this link.](https://github.com/jsakamoto/EntityFrameworkCore.IndexAttribute/blob/master/README-Appendix-E.md)
 
 ## For More Detail...
 
@@ -166,9 +172,9 @@ Please visit document site of EF 6.x and `[Index]` attribute for EF 6.x.
 
 ## Release Notes
 
-- [Toolbelt.EntityFrameworkCore.IndexAttribute.Attibute - Release Notes](https://github.com/jsakamoto/EntityFrameworkCore.IndexAttribute/blob/master/EFCore.IndexAttribute.Attribute/RELEASE-NOTES.txt)
-- [Toolbelt.EntityFrameworkCore.IndexAttribute - Release Notes](https://github.com/jsakamoto/EntityFrameworkCore.IndexAttribute/blob/master/EFCore.IndexAttribute/RELEASE-NOTES.txt)
-- [Toolbelt.EntityFrameworkCore.IndexAttribute.SqlServer - Release Notes](https://github.com/jsakamoto/EntityFrameworkCore.IndexAttribute/blob/master/EFCore.IndexAttribute.SqlServer/RELEASE-NOTES.txt)
+- [Toolbelt.EntityFrameworkCore.IndexAttribute.Attibute](https://github.com/jsakamoto/EntityFrameworkCore.IndexAttribute/blob/master/EFCore.IndexAttribute.Attribute/RELEASE-NOTES.txt)
+- [Toolbelt.EntityFrameworkCore.IndexAttribute](https://github.com/jsakamoto/EntityFrameworkCore.IndexAttribute/blob/master/EFCore.IndexAttribute/RELEASE-NOTES.txt)
+- [Toolbelt.EntityFrameworkCore.IndexAttribute.SqlServer](https://github.com/jsakamoto/EntityFrameworkCore.IndexAttribute/blob/master/EFCore.IndexAttribute.SqlServer/RELEASE-NOTES.txt)
 
 ## License
 
