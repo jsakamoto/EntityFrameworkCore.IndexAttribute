@@ -152,15 +152,15 @@ public class Employee {
 
 ## Appendix C -  If you want to use only "IndexAttribute" without any dependencies...
 
-If you want to use only "IndexColumnAttribute" class without any dependencies, you can use [Toolbelt.EntityFrameworkCore.IndexAttribute.Attribute](https://www.nuget.org/packages/Toolbelt.EntityFrameworkCore.IndexAttribute.Attribute) NuGet package.
+If you want to use only "IndexColumnAttribute" class without any dependencies, you can use [Toolbelt.EntityFrameworkCore.IndexAttribute.Attribute](https://j.mp/3kfJgTm) NuGet package.
 
 ## Appendix D - Upgrade an existing project
 
-For more detail on this topic, please visit [this link.](https://github.com/jsakamoto/EntityFrameworkCore.IndexAttribute/blob/master/README-Appendix-D.md)
+For more detail on this topic, please visit [this link.](https://j.mp/2HlmNFJ)
 
 ## Appendix E -  If you run into a compile error CS0104...
 
-For more detail on this topic, please visit [this link.](https://github.com/jsakamoto/EntityFrameworkCore.IndexAttribute/blob/master/README-Appendix-E.md)
+For more detail on this topic, please visit [this link.](https://j.mp/3476B3X)
 
 ## For More Detail...
 
@@ -168,8 +168,8 @@ This library is designed to have the same syntax as EF 6.x `[Index]` annotation.
 
 Please visit document site of EF 6.x and `[Index]` attribute for EF 6.x.
 
-- [MSDN Document - Entity Framework Code First Data Annotations](https://msdn.microsoft.com/en-us/library/jj591583%28v=vs.113%29.aspx?f=255&MSPPError=-2147217396)
-- [MSDN Document - IndexAttribute class](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.schema.indexattribute(v=vs.113).aspx)
+- [MSDN Document - Entity Framework Code First Data Annotations](https://j.mp/37hHBZI)
+- [MSDN Document - IndexAttribute class](https://j.mp/2HeIAzp)
 
 ## Limitations
 
@@ -177,11 +177,11 @@ Please visit document site of EF 6.x and `[Index]` attribute for EF 6.x.
 
 ## Release Notes
 
-- [Toolbelt.EntityFrameworkCore.IndexAttribute.Attibute](https://github.com/jsakamoto/EntityFrameworkCore.IndexAttribute/blob/master/EFCore.IndexAttribute.Attribute/RELEASE-NOTES.txt)
-- [Toolbelt.EntityFrameworkCore.IndexAttribute](https://github.com/jsakamoto/EntityFrameworkCore.IndexAttribute/blob/master/EFCore.IndexAttribute/RELEASE-NOTES.txt)
-- [Toolbelt.EntityFrameworkCore.IndexAttribute.SqlServer](https://github.com/jsakamoto/EntityFrameworkCore.IndexAttribute/blob/master/EFCore.IndexAttribute.SqlServer/RELEASE-NOTES.txt)
+- [Toolbelt.EntityFrameworkCore.IndexAttribute.Attibute](https://j.mp/3lSWUfw)
+- [Toolbelt.EntityFrameworkCore.IndexAttribute](https://j.mp/359Hg90)
+- [Toolbelt.EntityFrameworkCore.IndexAttribute.SqlServer](https://j.mp/3dBWDuu)
 
 ## License
 
-[MIT License](https://github.com/jsakamoto/EntityFrameworkCore.IndexAttribute/blob/master/LICENSE)
+[MIT License](https://j.mp/3476mWB)
 
