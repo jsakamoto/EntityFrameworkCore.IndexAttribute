@@ -11,13 +11,13 @@ namespace EntityFrameworkCore.IndexAttributeTest.Models
         public int PersonId { get; set; }
 
         [ForeignKey(nameof(PersonId))]
-        public virtual Person Person { get; set; }
+        public virtual Person Person { get; set; } = new Person();
 
         [IndexColumn]
         [IndexColumn("Ix_Provider_and_Account", 1, IsUnique = true, IsClustered = true)]
         public SNSProviders Provider { get; set; }
 
         [IndexColumn("Ix_Provider_and_Account", 2, IsUnique = true, IsClustered = true)]
-        public string AccountName { get; set; }
+        public string AccountName { get; set; } = "";
     }
 }

@@ -7,14 +7,14 @@ namespace EntityFrameworkCore.IndexAttributeTest.Models
         public int Id { get; set; }
 
         [IndexColumn(IsUnique = true)]
-        public string Name { get; set; }
+        public string Name { get; set; } = "";
 
         public int Age { get; set; }
 
-        public Address Address { get; set; }
+        public Address Address { get; set; } = new Address();
 
-        public PhoneNumber PhoneNumber { get; set; }
+        public PhoneNumber PhoneNumber { get; set; } = new PhoneNumber();
 
-        public PhoneNumber FaxNumber { get; set; }
+        public PhoneNumber FaxNumber { get; set; } = new PhoneNumber();
     }
 }

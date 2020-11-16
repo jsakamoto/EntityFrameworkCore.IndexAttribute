@@ -8,9 +8,11 @@ namespace EntityFrameworkCore.IndexAttributeTest.Models
 
         public DbSet<SNSAccount> SNSAccounts { get; set; }
 
+#nullable disable
         public MyDbContextBase(DbContextOptions<MyDbContextBase> options) : base(options)
         {
         }
+#nullable restore
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

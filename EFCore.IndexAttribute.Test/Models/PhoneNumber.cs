@@ -7,8 +7,8 @@ namespace EntityFrameworkCore.IndexAttributeTest.Models
         [IndexColumn]
         public int CountryCode { get; set; }
 
-        public string CityNumber { get; set; }
+        public string CityNumber { get; set; } = "";
 
-        public string Number { get; set; }
+        public string Number { get; set; } = "";
     }
 }

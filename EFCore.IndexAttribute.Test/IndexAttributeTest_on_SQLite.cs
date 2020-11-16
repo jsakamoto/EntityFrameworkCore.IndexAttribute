@@ -31,7 +31,7 @@ namespace EntityFrameworkCore.IndexAttributeTest
                         ORDER BY tbl_name, name, sql";
                     var reader = cmd.ExecuteReader();
                     var dump = new List<string>();
-                    try { while (reader.Read()) dump.Add(reader[4].ToString()); }
+                    try { while (reader.Read()) dump.Add(reader[4]?.ToString() ?? throw new NullReferenceException("reader[4] returns null.")); }
                     finally { reader.Close(); }
                     dump.Is(
                         @"CREATE INDEX ""IX_Country"" ON ""People"" (""Address_Country"")",
