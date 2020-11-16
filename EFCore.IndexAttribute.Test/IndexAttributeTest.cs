@@ -97,8 +97,7 @@ namespace EntityFrameworkCore.IndexAttributeTest
             try
             {
                 // Validate database indexes.
-                var conn = db.Database.GetDbConnection() as SqlConnection;
-                if (conn == null) throw new NullReferenceException("db.Database.GetDbConnection() returns null.");
+                if (!(db.Database.GetDbConnection() is SqlConnection conn)) throw new NullReferenceException("db.Database.GetDbConnection() returns not SqlConnection.");
                 using var cmd = conn.CreateCommand();
                 cmd.CommandText = @"
                         SELECT [Table] = t.name, [Index] = ind.name, [Column] = col.name, [IsUnique] = ind.is_unique, [Nullable] = col.is_nullable, [Type] = ind.type_desc, [IsInclude] = ic.is_included_column
