@@ -36,7 +36,7 @@ namespace EFCore.IndexAttribute.Test.MigrationTest
         {
             var testDir = AppDomain.CurrentDomain.BaseDirectory;
             do { testDir = Path.GetDirectoryName(testDir); } while (!Exists(testDir, "*.sln"));
-            testDir = Path.Combine(testDir, "EFCore.IndexAttribute.Test.MigrationTest");
+            testDir = Path.Combine(testDir, "EFCore.IndexAttribute.UnitTests", "EFCore.IndexAttribute.Test.MigrationTest");
             return testDir;
         }
 
