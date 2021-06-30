@@ -1,4 +1,7 @@
-﻿v.5.0.0
+﻿v.5.0.1
+- Supports EntityFramework Core v.6.0
+
+v.5.0.0
 - Add [IndexColumn] attribute. And deprecate [Index] attribute in this package to avoid conflict official [Index] attribute of EFCore v5.
 
 v.3.2.0
