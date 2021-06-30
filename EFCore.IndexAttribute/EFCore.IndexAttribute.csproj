@@ -9,7 +9,8 @@
     <Authors>J.Sakamoto</Authors>
     <Company>J.Sakamoto</Company>
     <Product>IndexAttribute and model builder extension for EntityFrameworkCore</Product>
-    <Description>The `[IndexColumn]` attribute that is the revival of `[Index]` attribute for EF Core. (with extension for model building.)&#xD;&#xA;This package also provides [PrimaryKey] attribute.</Description>
+    <Description>The `[IndexColumn]` attribute that is the revival of `[Index]` attribute for EF Core. (with extension for model building.)
+This package also provides [PrimaryKey] attribute.</Description>
     <Copyright>Copyright 2017-2020 J.Sakamoto, MIT License</Copyright>
     <PackageLicenseUrl></PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/jsakamoto/EntityFrameworkCore.IndexAttribute</PackageProjectUrl>
@@ -37,7 +38,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Toolbelt.EntityFrameworkCore.AnnotationBasedModelBuilder" Version="3.1.0" />
+    <PackageReference Include="Toolbelt.EntityFrameworkCore.AnnotationBasedModelBuilder" Version="5.0.1-preview.1.0" />
     <ProjectReference Include="..\EFCore.IndexAttribute.Attribute\EFCore.IndexAttribute.Attribute.csproj" />
   </ItemGroup>
 
