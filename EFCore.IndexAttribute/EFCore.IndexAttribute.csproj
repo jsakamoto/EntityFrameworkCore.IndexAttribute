@@ -33,7 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Toolbelt.EntityFrameworkCore.AnnotationBasedModelBuilder" Version="5.0.1-preview.1.0" />
+    <PackageReference Include="Toolbelt.EntityFrameworkCore.AnnotationBasedModelBuilder" Version="5.0.1" />
     <ProjectReference Include="..\EFCore.IndexAttribute.Attribute\EFCore.IndexAttribute.Attribute.csproj" />
   </ItemGroup>
 
