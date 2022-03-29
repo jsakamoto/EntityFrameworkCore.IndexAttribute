@@ -35,6 +35,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore.IndexAttribute.Test.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore.IndexAttribute.Test.EF70", "EFCore.IndexAttribute.UnitTests\EFCore.IndexAttribute.Test.EF70\EFCore.IndexAttribute.Test.EF70.csproj", "{7BC41885-E075-4724-9F0A-79CC49E6759A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C8A02269-1A3A-448E-A7F3-7408F468843C}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\unit-tests.yml = .github\workflows\unit-tests.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
