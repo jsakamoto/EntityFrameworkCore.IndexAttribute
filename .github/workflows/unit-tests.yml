@@ -3,8 +3,8 @@ name: unit tests
 on:
   push:
     branches: 
-    - '*'
-    - '-master'
+      - 'trial/**'
+      - master
 
 jobs:
   deploy:
