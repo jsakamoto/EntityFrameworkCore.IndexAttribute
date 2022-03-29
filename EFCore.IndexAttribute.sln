@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.28606.126
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32317.152
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore.IndexAttribute", "EFCore.IndexAttribute\EFCore.IndexAttribute.csproj", "{D8527AE3-DB33-43CA-950B-22B3815DC8C9}"
 EndProject
@@ -33,15 +33,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore.IndexAttribute.Test.EF60", "EFCore.IndexAttribute.UnitTests\EFCore.IndexAttribute.Test.EF60\EFCore.IndexAttribute.Test.EF60.csproj", "{D989B49C-25D1-4115-B814-77747747E87A}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore.IndexAttribute.Test.EF70", "EFCore.IndexAttribute.UnitTests\EFCore.IndexAttribute.Test.EF70\EFCore.IndexAttribute.Test.EF70.csproj", "{7BC41885-E075-4724-9F0A-79CC49E6759A}"
+EndProject
 Global
-	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		EFCore.IndexAttribute.UnitTests\EFCore.IndexAttribute.Test\EFCore.IndexAttribute.Test.projitems*{581de162-8ea0-46b8-923b-331e3d7f346b}*SharedItemsImports = 5
-		EFCore.IndexAttribute.UnitTests\EFCore.IndexAttribute.Test\EFCore.IndexAttribute.Test.projitems*{58b58cbb-ee83-4a43-8c69-a02204c84f57}*SharedItemsImports = 13
-		EFCore.IndexAttribute.UnitTests\EFCore.IndexAttribute.Test\EFCore.IndexAttribute.Test.projitems*{66291784-e6f6-42cd-89c0-3a042cda5b9c}*SharedItemsImports = 5
-		EFCore.IndexAttribute.UnitTests\EFCore.IndexAttribute.Test\EFCore.IndexAttribute.Test.projitems*{7182976f-f643-4bfc-9fdb-d73333f958be}*SharedItemsImports = 5
-		EFCore.IndexAttribute.UnitTests\EFCore.IndexAttribute.Test\EFCore.IndexAttribute.Test.projitems*{d989b49c-25d1-4115-b814-77747747e87a}*SharedItemsImports = 5
-		EFCore.IndexAttribute.UnitTests\EFCore.IndexAttribute.Test\EFCore.IndexAttribute.Test.projitems*{fea15466-22f6-4a86-afc3-66523c59fdb9}*SharedItemsImports = 5
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -83,6 +77,10 @@ Global
 		{D989B49C-25D1-4115-B814-77747747E87A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D989B49C-25D1-4115-B814-77747747E87A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D989B49C-25D1-4115-B814-77747747E87A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BC41885-E075-4724-9F0A-79CC49E6759A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BC41885-E075-4724-9F0A-79CC49E6759A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BC41885-E075-4724-9F0A-79CC49E6759A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BC41885-E075-4724-9F0A-79CC49E6759A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -95,8 +93,18 @@ Global
 		{7182976F-F643-4BFC-9FDB-D73333F958BE} = {62796DBC-AAF0-4C48-A7D0-2E0780C078FB}
 		{F9437EB1-F80A-4D52-93DC-822929A9E874} = {62796DBC-AAF0-4C48-A7D0-2E0780C078FB}
 		{D989B49C-25D1-4115-B814-77747747E87A} = {62796DBC-AAF0-4C48-A7D0-2E0780C078FB}
+		{7BC41885-E075-4724-9F0A-79CC49E6759A} = {62796DBC-AAF0-4C48-A7D0-2E0780C078FB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AC9C68B2-0D82-4D92-BC64-B71BC00F5DEB}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		EFCore.IndexAttribute.UnitTests\EFCore.IndexAttribute.Test\EFCore.IndexAttribute.Test.projitems*{581de162-8ea0-46b8-923b-331e3d7f346b}*SharedItemsImports = 5
+		EFCore.IndexAttribute.UnitTests\EFCore.IndexAttribute.Test\EFCore.IndexAttribute.Test.projitems*{58b58cbb-ee83-4a43-8c69-a02204c84f57}*SharedItemsImports = 13
+		EFCore.IndexAttribute.UnitTests\EFCore.IndexAttribute.Test\EFCore.IndexAttribute.Test.projitems*{66291784-e6f6-42cd-89c0-3a042cda5b9c}*SharedItemsImports = 5
+		EFCore.IndexAttribute.UnitTests\EFCore.IndexAttribute.Test\EFCore.IndexAttribute.Test.projitems*{7182976f-f643-4bfc-9fdb-d73333f958be}*SharedItemsImports = 5
+		EFCore.IndexAttribute.UnitTests\EFCore.IndexAttribute.Test\EFCore.IndexAttribute.Test.projitems*{7bc41885-e075-4724-9f0a-79cc49e6759a}*SharedItemsImports = 5
+		EFCore.IndexAttribute.UnitTests\EFCore.IndexAttribute.Test\EFCore.IndexAttribute.Test.projitems*{d989b49c-25d1-4115-b814-77747747e87a}*SharedItemsImports = 5
+		EFCore.IndexAttribute.UnitTests\EFCore.IndexAttribute.Test\EFCore.IndexAttribute.Test.projitems*{fea15466-22f6-4a86-afc3-66523c59fdb9}*SharedItemsImports = 5
 	EndGlobalSection
 EndGlobal
