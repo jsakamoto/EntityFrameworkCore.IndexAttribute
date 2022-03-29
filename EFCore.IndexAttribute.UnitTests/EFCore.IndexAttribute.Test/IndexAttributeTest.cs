@@ -12,9 +12,16 @@ namespace EntityFrameworkCore.IndexAttributeTest
     {
         private static MyDbContextBase CreateMyDbContext(bool enableSqlServerFeature)
         {
+            var server = Environment.GetEnvironmentVariable("MSSQL_SERVER");
+            if (string.IsNullOrEmpty(server)) server = "(localdb)\\mssqllocaldb";
+            var user = Environment.GetEnvironmentVariable("MSSQL_USER");
+            var pwd = Environment.GetEnvironmentVariable("MSSQL_PWD");
+            var credential = (!string.IsNullOrEmpty(user) && !string.IsNullOrEmpty(pwd)) ? $"User={user};Password={pwd}" : "Integrated Security=True";
+            var connStrBase = $"Server={server};{credential};TrustServerCertificate=True;";
+
             var dbName = Guid.NewGuid().ToString("N");
 
-            using (var connToMaster = new SqlConnection("Server=(localdb)\\mssqllocaldb;Database=master;Trusted_Connection=True;"))
+            using (var connToMaster = new SqlConnection(connStrBase + "Database=master;"))
             using (var cmd = new SqlCommand($"CREATE DATABASE [{dbName}]", connToMaster))
             {
                 connToMaster.Open();
@@ -30,7 +37,7 @@ namespace EntityFrameworkCore.IndexAttributeTest
                     level: LogLevel.Information);
             });
 
-            var connStr = $"Server=(localdb)\\mssqllocaldb;Database={dbName};Trusted_Connection=True;MultipleActiveResultSets=True;";
+            var connStr = connStrBase + $"Database={dbName};";
             var option = new DbContextOptionsBuilder<MyDbContextBase>()
                 .UseSqlServer(connStr)
                 .UseLoggerFactory(loggerFactory)
@@ -51,7 +58,7 @@ namespace EntityFrameworkCore.IndexAttributeTest
         [Fact(DisplayName = "CreateDb with Indexes on MSSQL LocalDb")]
         public void CreateDb_with_Indexes_Test()
         {
-            var dump = CreateDbAndDumpIndexes(enableSqlServerFeature: false);
+            var dump = this.CreateDbAndDumpIndexes(enableSqlServerFeature: false);
             dump.Is(
                 $"People|IX_Country|Address_Country|False|{nullable}|NONCLUSTERED|False",
                 $"People|IX_Lines|Line1|False|{nullable}|NONCLUSTERED|False",
@@ -69,7 +76,7 @@ namespace EntityFrameworkCore.IndexAttributeTest
         [Fact(DisplayName = "CreateDb with Indexes for SQL Server on MSSQL LocalDb")]
         public void CreateDb_with_IndexesForSqlServer_Test()
         {
-            var dump = CreateDbAndDumpIndexes(enableSqlServerFeature: true);
+            var dump = this.CreateDbAndDumpIndexes(enableSqlServerFeature: true);
             dump.Is(
                 $"People|IX_Country|Address_Country|False|{nullable}|NONCLUSTERED|False",
                 $"People|IX_Country|Address_ZipPostCode|False|{nullable}|NONCLUSTERED|True",
