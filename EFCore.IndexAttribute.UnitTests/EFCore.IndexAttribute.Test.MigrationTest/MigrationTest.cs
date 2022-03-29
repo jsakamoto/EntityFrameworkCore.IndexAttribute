@@ -14,9 +14,10 @@ public class MigrationTest
         // Check the project is fine for build before adding migration.
         var build = await Start("dotnet", "build --nologo", workDir).WaitForExitAsync();
         build.ExitCode.Is(0, message: build.Output);
+        var restoreTools = await Start("dotnet", "tool restore", workDir).WaitForExitAsync();
+        restoreTools.ExitCode.Is(0, message: build.Output);
 
         // Add migration code, and...
-        //Run(this.TestProjDir, "dotnet", "ef", "migrations", "add", "initial").ExitCode.Is(0);
         var migration = await Start("dotnet", "ef migrations add initial", workDir).WaitForExitAsync();
         migration.ExitCode.Is(0, message: build.Output);
 
