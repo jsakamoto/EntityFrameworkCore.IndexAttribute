@@ -55,7 +55,7 @@ namespace EntityFrameworkCore.IndexAttributeTest
                 "NULLABLE";
 #endif
 
-        [Fact(DisplayName = "CreateDb with Indexes on MSSQL LocalDb")]
+        [Fact(DisplayName = "CreateDb with Indexes")]
         public void CreateDb_with_Indexes_Test()
         {
             var dump = this.CreateDbAndDumpIndexes(enableSqlServerFeature: false);
@@ -73,7 +73,7 @@ namespace EntityFrameworkCore.IndexAttributeTest
             );
         }
 
-        [Fact(DisplayName = "CreateDb with Indexes for SQL Server on MSSQL LocalDb")]
+        [Fact(DisplayName = "CreateDb with Indexes for SQL Server")]
         public void CreateDb_with_IndexesForSqlServer_Test()
         {
             var dump = this.CreateDbAndDumpIndexes(enableSqlServerFeature: true);
