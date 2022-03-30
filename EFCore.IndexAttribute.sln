@@ -15,25 +15,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "README", "README", "{2DBA60
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore.IndexAttribute.Attribute", "EFCore.IndexAttribute.Attribute\EFCore.IndexAttribute.Attribute.csproj", "{2C15BC9E-DB1D-4DC3-A818-F9AF0A6ADDD2}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "EFCore.IndexAttribute.Test", "EFCore.IndexAttribute.UnitTests\EFCore.IndexAttribute.Test\EFCore.IndexAttribute.Test.shproj", "{58B58CBB-EE83-4A43-8C69-A02204C84F57}"
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "EFCore.IndexAttribute.Test", "EFCore.IndexAttribute.UnitTests\Test\EFCore.IndexAttribute.Test.shproj", "{58B58CBB-EE83-4A43-8C69-A02204C84F57}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore.IndexAttribute.SqlServer", "EFCore.IndexAttribute.SqlServer\EFCore.IndexAttribute.SqlServer.csproj", "{04DCC94C-58BF-4919-9BBE-C53FD3212E57}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore.IndexAttribute.Test.EF30", "EFCore.IndexAttribute.UnitTests\EFCore.IndexAttribute.Test.EF30\EFCore.IndexAttribute.Test.EF30.csproj", "{66291784-E6F6-42CD-89C0-3A042CDA5B9C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore.IndexAttribute.Test.EF30", "EFCore.IndexAttribute.UnitTests\EF30\EFCore.IndexAttribute.Test.EF30.csproj", "{66291784-E6F6-42CD-89C0-3A042CDA5B9C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore.IndexAttribute.Test.EF31", "EFCore.IndexAttribute.UnitTests\EFCore.IndexAttribute.Test.EF31\EFCore.IndexAttribute.Test.EF31.csproj", "{581DE162-8EA0-46B8-923B-331E3D7F346B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore.IndexAttribute.Test.EF31", "EFCore.IndexAttribute.UnitTests\EF31\EFCore.IndexAttribute.Test.EF31.csproj", "{581DE162-8EA0-46B8-923B-331E3D7F346B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore.IndexAttribute.Test.EF311", "EFCore.IndexAttribute.UnitTests\EFCore.IndexAttribute.Test.EF311\EFCore.IndexAttribute.Test.EF311.csproj", "{FEA15466-22F6-4A86-AFC3-66523C59FDB9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore.IndexAttribute.Test.EF311", "EFCore.IndexAttribute.UnitTests\EF311\EFCore.IndexAttribute.Test.EF311.csproj", "{FEA15466-22F6-4A86-AFC3-66523C59FDB9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore.IndexAttribute.Test.EF50", "EFCore.IndexAttribute.UnitTests\EFCore.IndexAttribute.Test.EF50\EFCore.IndexAttribute.Test.EF50.csproj", "{7182976F-F643-4BFC-9FDB-D73333F958BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore.IndexAttribute.Test.EF50", "EFCore.IndexAttribute.UnitTests\EF50\EFCore.IndexAttribute.Test.EF50.csproj", "{7182976F-F643-4BFC-9FDB-D73333F958BE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore.IndexAttribute.Test.MigrationTest", "EFCore.IndexAttribute.UnitTests\EFCore.IndexAttribute.Test.MigrationTest\EFCore.IndexAttribute.Test.MigrationTest.csproj", "{F9437EB1-F80A-4D52-93DC-822929A9E874}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore.IndexAttribute.Test.MigrationTest", "EFCore.IndexAttribute.UnitTests\MigrationTest\EFCore.IndexAttribute.Test.MigrationTest.csproj", "{F9437EB1-F80A-4D52-93DC-822929A9E874}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{62796DBC-AAF0-4C48-A7D0-2E0780C078FB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore.IndexAttribute.Test.EF60", "EFCore.IndexAttribute.UnitTests\EFCore.IndexAttribute.Test.EF60\EFCore.IndexAttribute.Test.EF60.csproj", "{D989B49C-25D1-4115-B814-77747747E87A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore.IndexAttribute.Test.EF60", "EFCore.IndexAttribute.UnitTests\EF60\EFCore.IndexAttribute.Test.EF60.csproj", "{D989B49C-25D1-4115-B814-77747747E87A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore.IndexAttribute.Test.EF70", "EFCore.IndexAttribute.UnitTests\EFCore.IndexAttribute.Test.EF70\EFCore.IndexAttribute.Test.EF70.csproj", "{7BC41885-E075-4724-9F0A-79CC49E6759A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore.IndexAttribute.Test.EF70", "EFCore.IndexAttribute.UnitTests\EF70\EFCore.IndexAttribute.Test.EF70.csproj", "{7BC41885-E075-4724-9F0A-79CC49E6759A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C8A02269-1A3A-448E-A7F3-7408F468843C}"
 	ProjectSection(SolutionItems) = preProject
@@ -104,12 +104,12 @@ Global
 		SolutionGuid = {AC9C68B2-0D82-4D92-BC64-B71BC00F5DEB}
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		EFCore.IndexAttribute.UnitTests\EFCore.IndexAttribute.Test\EFCore.IndexAttribute.Test.projitems*{581de162-8ea0-46b8-923b-331e3d7f346b}*SharedItemsImports = 5
-		EFCore.IndexAttribute.UnitTests\EFCore.IndexAttribute.Test\EFCore.IndexAttribute.Test.projitems*{58b58cbb-ee83-4a43-8c69-a02204c84f57}*SharedItemsImports = 13
-		EFCore.IndexAttribute.UnitTests\EFCore.IndexAttribute.Test\EFCore.IndexAttribute.Test.projitems*{66291784-e6f6-42cd-89c0-3a042cda5b9c}*SharedItemsImports = 5
-		EFCore.IndexAttribute.UnitTests\EFCore.IndexAttribute.Test\EFCore.IndexAttribute.Test.projitems*{7182976f-f643-4bfc-9fdb-d73333f958be}*SharedItemsImports = 5
-		EFCore.IndexAttribute.UnitTests\EFCore.IndexAttribute.Test\EFCore.IndexAttribute.Test.projitems*{7bc41885-e075-4724-9f0a-79cc49e6759a}*SharedItemsImports = 5
-		EFCore.IndexAttribute.UnitTests\EFCore.IndexAttribute.Test\EFCore.IndexAttribute.Test.projitems*{d989b49c-25d1-4115-b814-77747747e87a}*SharedItemsImports = 5
-		EFCore.IndexAttribute.UnitTests\EFCore.IndexAttribute.Test\EFCore.IndexAttribute.Test.projitems*{fea15466-22f6-4a86-afc3-66523c59fdb9}*SharedItemsImports = 5
+		EFCore.IndexAttribute.UnitTests\Test\EFCore.IndexAttribute.Test.projitems*{581de162-8ea0-46b8-923b-331e3d7f346b}*SharedItemsImports = 5
+		EFCore.IndexAttribute.UnitTests\Test\EFCore.IndexAttribute.Test.projitems*{58b58cbb-ee83-4a43-8c69-a02204c84f57}*SharedItemsImports = 13
+		EFCore.IndexAttribute.UnitTests\Test\EFCore.IndexAttribute.Test.projitems*{66291784-e6f6-42cd-89c0-3a042cda5b9c}*SharedItemsImports = 5
+		EFCore.IndexAttribute.UnitTests\Test\EFCore.IndexAttribute.Test.projitems*{7182976f-f643-4bfc-9fdb-d73333f958be}*SharedItemsImports = 5
+		EFCore.IndexAttribute.UnitTests\Test\EFCore.IndexAttribute.Test.projitems*{7bc41885-e075-4724-9f0a-79cc49e6759a}*SharedItemsImports = 5
+		EFCore.IndexAttribute.UnitTests\Test\EFCore.IndexAttribute.Test.projitems*{d989b49c-25d1-4115-b814-77747747e87a}*SharedItemsImports = 5
+		EFCore.IndexAttribute.UnitTests\Test\EFCore.IndexAttribute.Test.projitems*{fea15466-22f6-4a86-afc3-66523c59fdb9}*SharedItemsImports = 5
 	EndGlobalSection
 EndGlobal

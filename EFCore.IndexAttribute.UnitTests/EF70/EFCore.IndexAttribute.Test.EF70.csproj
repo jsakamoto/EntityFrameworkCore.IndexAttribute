@@ -31,6 +31,6 @@
     <ProjectReference Include="..\..\EFCore.IndexAttribute.SqlServer\EFCore.IndexAttribute.SqlServer.csproj" />
   </ItemGroup>
 
-  <Import Project="..\EFCore.IndexAttribute.Test\EFCore.IndexAttribute.Test.projitems" Label="Shared" />
+  <Import Project="..\Test\EFCore.IndexAttribute.Test.projitems" Label="Shared" />
 
 </Project>
