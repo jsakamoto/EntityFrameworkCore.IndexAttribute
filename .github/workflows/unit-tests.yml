@@ -16,17 +16,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # Checkout the code
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
-      # Install .NET Core SDK
-      - name: Setup .NET Core
+      # Install .NET SDK
+      - name: Setup .NET SDK
         uses: actions/setup-dotnet@v2
         with:
           dotnet-version: |
-            3.1.x
-            5.0.x
             6.0.x
-            7.0.100-rc.2.22477.23
+            7.0.x
+            8.0.100-rc.2.23502.2
 
       # Install SQL Server
       - name: Setup SQL Server
@@ -34,11 +33,4 @@ jobs:
 
       # Perform unit tests
       - name: Perform unit tests
-        run: |
-            dotnet test EFCore.IndexAttribute.UnitTests/EF30 -l "console;verbosity=normal" -v:q --nologo
-            dotnet test EFCore.IndexAttribute.UnitTests/EF31 -l "console;verbosity=normal" -v:q --nologo
-            dotnet test EFCore.IndexAttribute.UnitTests/EF311 -l "console;verbosity=normal" -v:q --nologo
-            dotnet test EFCore.IndexAttribute.UnitTests/EF50 -l "console;verbosity=normal" -v:q --nologo
-            dotnet test EFCore.IndexAttribute.UnitTests/EF60 -l "console;verbosity=normal" -v:q --nologo
-            dotnet test EFCore.IndexAttribute.UnitTests/EF70 -l "console;verbosity=normal" -v:q --nologo
-            dotnet test EFCore.IndexAttribute.UnitTests/MigrationTest -l "console;verbosity=normal" -v:q --nologo
+        run: dotnet test EFCore.IndexAttribute.Test -l "console;verbosity=normal" -v:q --nologo

@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Toolbelt.ComponentModel.DataAnnotations.Schema;
+using Toolbelt.ComponentModel.DataAnnotations.Schema.V5;
 
 namespace TestProject.Models
 {
@@ -7,10 +7,10 @@ namespace TestProject.Models
     {
         public int Id { get; set; }
 
-        [Index(IsUnique = true), Required, StringLength(10)]
+        [IndexColumn(IsUnique = true), Required, StringLength(10)]
         public string Name { get; set; }
 
-        [Index(IsUnique = true, Includes = new[] { nameof(Weight) })]
+        [IndexColumn(IsUnique = true, Includes = new[] { nameof(Weight) })]
         public int Height { get; set; }
 
         public int Weight { get; set; }

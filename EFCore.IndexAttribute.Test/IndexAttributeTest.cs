@@ -48,26 +48,19 @@ namespace EntityFrameworkCore.IndexAttributeTest
                 new MyDbContext(option);
         }
 
-        private const string nullable =
-#if ENABLE_NON_NULLABLE_OWNED_TYPES
-                "NONNULLABLE";
-#else
-                "NULLABLE";
-#endif
-
         [Fact(DisplayName = "CreateDb with Indexes")]
         public void CreateDb_with_Indexes_Test()
         {
             var dump = this.CreateDbAndDumpIndexes(enableSqlServerFeature: false);
             dump.Is(
-                $"People|IX_Country|Address_Country|False|{nullable}|NONCLUSTERED|False",
-                $"People|IX_Lines|Line1|False|{nullable}|NONCLUSTERED|False",
-                $"People|IX_Lines|Line2|False|{nullable}|NONCLUSTERED|False",
-                $"People|IX_People_FaxNumber_CountryCode|FaxNumber_CountryCode|False|{nullable}|NONCLUSTERED|False",
-                $"People|IX_People_Name|Name|True|{nullable}|NONCLUSTERED|False",
-                $"People|IX_People_PhoneNumber_CountryCode|PhoneNumber_CountryCode|False|{nullable}|NONCLUSTERED|False",
+                $"People|IX_Country|Address_Country|False|NONNULLABLE|NONCLUSTERED|False",
+                $"People|IX_Lines|Line1|False|NONNULLABLE|NONCLUSTERED|False",
+                $"People|IX_Lines|Line2|False|NONNULLABLE|NONCLUSTERED|False",
+                $"People|IX_People_FaxNumber_CountryCode|FaxNumber_CountryCode|False|NONNULLABLE|NONCLUSTERED|False",
+                $"People|IX_People_Name|Name|True|NONNULLABLE|NONCLUSTERED|False",
+                $"People|IX_People_PhoneNumber_CountryCode|PhoneNumber_CountryCode|False|NONNULLABLE|NONCLUSTERED|False",
                 $"SNSAccounts|Ix_Provider_and_Account|Provider|True|NONNULLABLE|NONCLUSTERED|False",
-                $"SNSAccounts|Ix_Provider_and_Account|AccountName|True|{nullable}|NONCLUSTERED|False",
+                $"SNSAccounts|Ix_Provider_and_Account|AccountName|True|NONNULLABLE|NONCLUSTERED|False",
                 $"SNSAccounts|IX_SNSAccounts_PersonId|PersonId|False|NONNULLABLE|NONCLUSTERED|False",
                 $"SNSAccounts|IX_SNSAccounts_Provider|Provider|False|NONNULLABLE|NONCLUSTERED|False"
             );
@@ -78,16 +71,16 @@ namespace EntityFrameworkCore.IndexAttributeTest
         {
             var dump = this.CreateDbAndDumpIndexes(enableSqlServerFeature: true);
             dump.Is(
-                $"People|IX_Country|Address_Country|False|{nullable}|NONCLUSTERED|False",
-                $"People|IX_Country|Address_ZipPostCode|False|{nullable}|NONCLUSTERED|True",
-                $"People|IX_Country|Address_TownCity|False|{nullable}|NONCLUSTERED|True",
-                $"People|IX_Lines|Line1|False|{nullable}|NONCLUSTERED|False",
-                $"People|IX_Lines|Line2|False|{nullable}|NONCLUSTERED|False",
-                $"People|IX_People_FaxNumber_CountryCode|FaxNumber_CountryCode|False|{nullable}|NONCLUSTERED|False",
-                $"People|IX_People_Name|Name|True|{nullable}|NONCLUSTERED|False",
-                $"People|IX_People_PhoneNumber_CountryCode|PhoneNumber_CountryCode|False|{nullable}|NONCLUSTERED|False",
+                $"People|IX_Country|Address_Country|False|NONNULLABLE|NONCLUSTERED|False",
+                $"People|IX_Country|Address_ZipPostCode|False|NONNULLABLE|NONCLUSTERED|True",
+                $"People|IX_Country|Address_TownCity|False|NONNULLABLE|NONCLUSTERED|True",
+                $"People|IX_Lines|Line1|False|NONNULLABLE|NONCLUSTERED|False",
+                $"People|IX_Lines|Line2|False|NONNULLABLE|NONCLUSTERED|False",
+                $"People|IX_People_FaxNumber_CountryCode|FaxNumber_CountryCode|False|NONNULLABLE|NONCLUSTERED|False",
+                $"People|IX_People_Name|Name|True|NONNULLABLE|NONCLUSTERED|False",
+                $"People|IX_People_PhoneNumber_CountryCode|PhoneNumber_CountryCode|False|NONNULLABLE|NONCLUSTERED|False",
                 $"SNSAccounts|Ix_Provider_and_Account|Provider|True|NONNULLABLE|CLUSTERED|False",
-                $"SNSAccounts|Ix_Provider_and_Account|AccountName|True|{nullable}|CLUSTERED|False",
+                $"SNSAccounts|Ix_Provider_and_Account|AccountName|True|NONNULLABLE|CLUSTERED|False",
                 $"SNSAccounts|IX_SNSAccounts_PersonId|PersonId|False|NONNULLABLE|NONCLUSTERED|False",
                 $"SNSAccounts|IX_SNSAccounts_Provider|Provider|False|NONNULLABLE|NONCLUSTERED|False"
             );
