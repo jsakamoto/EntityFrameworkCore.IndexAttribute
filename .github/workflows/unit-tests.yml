@@ -16,16 +16,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # Checkout the code
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       # Install .NET SDK
       - name: Setup .NET SDK
-        uses: actions/setup-dotnet@v2
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: |
             6.0.x
-            7.0.x
-            8.0.100-rc.2.23502.2
+            8.0.x
 
       # Install SQL Server
       - name: Setup SQL Server
