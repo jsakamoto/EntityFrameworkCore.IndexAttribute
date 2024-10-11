@@ -9,12 +9,9 @@ public class MigrationTest
 #if NET6_0
     private const string Framework = "net6.0";
     private const string EFToolVersion = "6.0.*";
-#elif NET7_0
-    private const string Framework = "net7.0";
-    private const string EFToolVersion = "7.0.*";
 #elif NET8_0
     private const string Framework = "net8.0";
-    private const string EFToolVersion = "8.0.0-rc.2.*";
+    private const string EFToolVersion = "8.0.*";
 #endif
 
     [Fact]
