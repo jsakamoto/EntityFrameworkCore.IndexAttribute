@@ -28,7 +28,7 @@ jobs:
 
       # Install SQL Server
       - name: Setup SQL Server
-        run: docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=$MSSQL_PWD" -p 1433:1433 --name sql1 --hostname sql1 -d mcr.microsoft.com/mssql/server:2019-latest
+        run: docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=$MSSQL_PWD" -p 1433:1433 --name sql1 --hostname sql1 -d mcr.microsoft.com/mssql/server:2022-latest
 
       # Perform unit tests
       - name: Perform unit tests
