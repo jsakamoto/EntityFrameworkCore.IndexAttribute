@@ -2,21 +2,20 @@
 using TestProject.Models;
 using Toolbelt.ComponentModel.DataAnnotations;
 
-namespace TestProject.Data
+namespace TestProject.Data;
+
+public class MyDbContext : DbContext
 {
-    public class MyDbContext : DbContext
+    public DbSet<Person> People { get; set; }
+
+    public MyDbContext(DbContextOptions<MyDbContext> options) : base(options)
     {
-        public DbSet<Person> People { get; set; }
+    }
 
-        public MyDbContext(DbContextOptions<MyDbContext> options) : base(options)
-        {
-        }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
-            // modelBuilder.BuildIndexesFromAnnotations();
-            modelBuilder.BuildIndexesFromAnnotationsForSqlServer();
-        }
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+        // modelBuilder.BuildIndexesFromAnnotations();
+        modelBuilder.BuildIndexesFromAnnotationsForSqlServer();
     }
 }

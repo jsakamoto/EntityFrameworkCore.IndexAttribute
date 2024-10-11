@@ -1,13 +1,8 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
-using TestProject.Data;
+﻿namespace TestProject;
 
-namespace TestProject
+class Program
 {
-    class Program
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
-        {
-        }
     }
 }

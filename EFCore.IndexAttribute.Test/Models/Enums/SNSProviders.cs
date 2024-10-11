@@ -1,11 +1,10 @@
-﻿namespace EntityFrameworkCore.IndexAttributeTest.Models
+﻿namespace EntityFrameworkCore.IndexAttributeTest.Models;
+
+public enum SNSProviders
 {
-    public enum SNSProviders
-    {
-        Twitter,
-        Facebook,
-        LinkedIn,
-        Instagram,
-        LINE
-    }
+    Twitter,
+    Facebook,
+    LinkedIn,
+    Instagram,
+    LINE
 }
