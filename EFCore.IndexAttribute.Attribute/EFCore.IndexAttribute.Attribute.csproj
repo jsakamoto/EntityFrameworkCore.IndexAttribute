@@ -4,18 +4,20 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Toolbelt.EntityFrameworkCore.IndexAttribute.Attribute</AssemblyName>
     <RootNamespace>Toolbelt.ComponentModel.DataAnnotations.Schema</RootNamespace>
-    <Version>5.0.0</Version>
+    <Version>5.0.1.2</Version>
     <Authors>J.Sakamoto</Authors>
     <Company>J.Sakamoto</Company>
     <Product>IndexAttribute for EntityFrameworkCore</Product>
     <Description>The `[IndexColumn]` attribute that is the revival of `[Index]` attribute for EF Core. (with extension for model building.)&#xD;&#xA;This package also provides [PrimaryKey] attribute.</Description>
-    <Copyright>Copyright 2017-2020 J.Sakamoto, MIT License</Copyright>
+    <Copyright>Copyright 2017-2024 J.Sakamoto, MIT License</Copyright>
     <PackageLicenseUrl></PackageLicenseUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/jsakamoto/EntityFrameworkCore.IndexAttribute</PackageProjectUrl>
     <PackageTags>entity-framework-core entityframeworkcore efcore index attribute</PackageTags>
     <GeneratePackageOnBuild Condition=" '$(Configuration)' == 'Release' ">true</GeneratePackageOnBuild>
     <PackageOutputPath>..\dist\</PackageOutputPath>
+    <PackageIcon>nupkg-icon.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -24,15 +26,9 @@
     <PackageReleaseNotes>(Please write the package release notes in "RELEASE-NOTES.txt".)</PackageReleaseNotes>
   </PropertyGroup>
 
-  <PropertyGroup>
-    <PackageIcon>nupkg-icon.png</PackageIcon>
-  </PropertyGroup>
   <ItemGroup>
-    <None Include="..\.assets\nupkg-icon.png">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-      <Visible>false</Visible>
-    </None>
+    <None Include="..\.assets\nupkg-icon.png" Visible="false" Pack="true" PackagePath="\" />
+    <None Include="..\README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
   <Target Name="PreparePackageReleaseNoteFromFile" BeforeTargets="GenerateNuspec">

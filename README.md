@@ -26,6 +26,7 @@ However, I'm going to continue improving and maintaining these libraries, becaus
 
 The version of EF Core | Version of this package
 -----------------------|-------------------------
+v.9.0                  | **v.5.0.1 or later (Recommended)**, v.5.0, v.3.2, v.3.1
 v.8.0                  | **v.5.0.1 or later (Recommended)**, v.5.0, v.3.2, v.3.1
 v.7.0                  | **v.5.0.1 or later (Recommended)**, v.5.0, v.3.2, v.3.1
 v.6.0                  | **v.5.0.1 or later (Recommended)**, v.5.0, v.3.2, v.3.1
