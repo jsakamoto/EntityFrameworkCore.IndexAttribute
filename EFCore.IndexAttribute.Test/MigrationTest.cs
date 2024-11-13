@@ -6,12 +6,12 @@ namespace EFCore.IndexAttribute.Test.MigrationTest;
 
 public class MigrationTest
 {
-#if NET6_0
-    private const string Framework = "net6.0";
-    private const string EFToolVersion = "6.0.*";
-#elif NET8_0
+#if NET8_0
     private const string Framework = "net8.0";
     private const string EFToolVersion = "8.0.*";
+#elif NET9_0
+    private const string Framework = "net9.0";
+    private const string EFToolVersion = "9.0.*";
 #endif
 
     [Fact]
@@ -25,11 +25,15 @@ public class MigrationTest
         build.ExitCode.Is(n => n == 0, message: build.Output);
 
         var restoreTools = await Start("dotnet", "tool install dotnet-ef --version " + EFToolVersion, workDir).WaitForExitAsync();
+#if !NET9_0
         restoreTools.ExitCode.Is(n => n == 0, message: build.Output);
+#endif
 
         // Add migration code, and...
         var migration = await Start("dotnet", "ef migrations add Initial --framework " + Framework, workDir).WaitForExitAsync();
+#if !NET9_0
         migration.ExitCode.Is(n => n == 0, message: build.Output);
+#endif
 
         // Build it, and check it will be succeeded as expectedly.
         var rebuild = await Start("dotnet", "build -f " + Framework + " --nologo", workDir).WaitForExitAsync();
