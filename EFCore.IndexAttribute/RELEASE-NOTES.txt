@@ -1,4 +1,8 @@
-﻿v.5.0.1.2
+﻿v.5.0.1.3
+- Supports EntityFramework Core 10.0
+- Update README.md
+
+v.5.0.1.2
 - Supports EntityFramework Core 9.0
 - Update README.md
 

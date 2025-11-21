@@ -16,20 +16,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # Checkout the code
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       # Install .NET SDK
       - name: Setup .NET SDK
-        uses: actions/setup-dotnet@v4
+        uses: actions/setup-dotnet@v5
         with:
           dotnet-version: |
             8.0.x
             9.0.x
+            10.0.x
 
       # Install SQL Server
       - name: Setup SQL Server
-        run: docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=$MSSQL_PWD" -p 1433:1433 --name sql1 --hostname sql1 -d mcr.microsoft.com/mssql/server:2022-latest
+        run: docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=$MSSQL_PWD" -p 1433:1433 --name sql1 --hostname sql1 -d mcr.microsoft.com/mssql/server:2025-latest
 
       # Perform unit tests
       - name: Perform unit tests
-        run: dotnet test EFCore.IndexAttribute.Test -l "console;verbosity=normal" -v:q --nologo
+        run: dotnet test EFCore.IndexAttribute.Test -l "console;verbosity=normal" --nologo

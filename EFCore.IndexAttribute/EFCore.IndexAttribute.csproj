@@ -5,7 +5,7 @@
     <AssemblyName>Toolbelt.EntityFrameworkCore.IndexAttribute</AssemblyName>
     <RootNamespace>Toolbelt.ComponentModel.DataAnnotations.Schema</RootNamespace>
     <PackageId>Toolbelt.EntityFrameworkCore.IndexAttribute</PackageId>
-    <Version>5.0.1.2</Version>
+    <Version>5.0.1.3</Version>
     <Authors>J.Sakamoto</Authors>
     <Company>J.Sakamoto</Company>
     <Product>IndexAttribute and model builder extension for EntityFrameworkCore</Product>
@@ -13,7 +13,7 @@
       The `[IndexColumn]` attribute that is the revival of `[Index]` attribute for EF Core. (with extension for model building.)
       This package also provides [PrimaryKey] attribute.
     </Description>
-    <Copyright>Copyright 2017-2024 J.Sakamoto, MIT License</Copyright>
+    <Copyright>Copyright 2017-2025 J.Sakamoto, MIT License</Copyright>
     <PackageLicenseUrl></PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/jsakamoto/EntityFrameworkCore.IndexAttribute</PackageProjectUrl>
     <PackageReleaseNotes>(Please write the package release notes in "RELEASE-NOTES.txt".)</PackageReleaseNotes>
@@ -33,7 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Toolbelt.EntityFrameworkCore.AnnotationBasedModelBuilder" Version="5.0.1.2" />
+    <PackageReference Include="Toolbelt.EntityFrameworkCore.AnnotationBasedModelBuilder" Version="5.0.1.3" />
     <ProjectReference Include="..\EFCore.IndexAttribute.Attribute\EFCore.IndexAttribute.Attribute.csproj" />
   </ItemGroup>
 

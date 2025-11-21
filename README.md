@@ -24,16 +24,11 @@ However, I'm going to continue improving and maintaining these libraries, becaus
 
 ### Supported Versions
 
-The version of EF Core | Version of this package
------------------------|-------------------------
-v.9.0                  | **v.5.0.1 or later (Recommended)**, v.5.0, v.3.2, v.3.1
-v.8.0                  | **v.5.0.1 or later (Recommended)**, v.5.0, v.3.2, v.3.1
-v.7.0                  | **v.5.0.1 or later (Recommended)**, v.5.0, v.3.2, v.3.1
-v.6.0                  | **v.5.0.1 or later (Recommended)**, v.5.0, v.3.2, v.3.1
-v.5.0                  | **v.5.0.1 or later (Recommended)**, v.5.0, v.3.2, v.3.1
-v.3.1                  | **v.5.0.1 or later (Recommended)**, v.5.0, v.3.2, v.3.1
-v.3.0                  | **v.5.0.1 or later (Recommended)**, v.5.0, v.3.2, v.3.1, v.3.0
-v.2.0, 2.1, 2.2        | v.2.0.x
+The version of EF Core       | Version of this package
+-----------------------------|-------------------------
+v.3.1, 5, 6, 7, 8, 9, and 10 | **v.5.0.1 or later (Recommended)**, v.5.0, v.3.2, v.3.1
+v.3.0                        | **v.5.0.1 or later (Recommended)**, v.5.0, v.3.2, v.3.1, v.3.0
+v.2.0, 2.1, 2.2              | v.2.0.x
 
 If you want to use `IsClustered=true` and/or `Includes` index features on a SQL Server, you have to add [`Toolbelt.EntityFrameworkCore.IndexAttribute.SqlServer`](https://www.nuget.org/packages/Toolbelt.EntityFrameworkCore.IndexAttribute.SqlServer/) package to your project, instead.
 
