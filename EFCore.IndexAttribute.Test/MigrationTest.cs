@@ -12,6 +12,9 @@ public class MigrationTest
 #elif NET9_0
     private const string Framework = "net9.0";
     private const string EFToolVersion = "9.0.*";
+#elif NET10_0
+    private const string Framework = "net10.0";
+    private const string EFToolVersion = "10.0.*";
 #endif
 
     [Fact]
@@ -25,13 +28,13 @@ public class MigrationTest
         build.ExitCode.Is(n => n == 0, message: build.Output);
 
         var restoreTools = await Start("dotnet", "tool install dotnet-ef --version " + EFToolVersion, workDir).WaitForExitAsync();
-#if !NET9_0
+#if NET8_0
         restoreTools.ExitCode.Is(n => n == 0, message: build.Output);
 #endif
 
         // Add migration code, and...
         var migration = await Start("dotnet", "ef migrations add Initial --framework " + Framework, workDir).WaitForExitAsync();
-#if !NET9_0
+#if NET8_0
         migration.ExitCode.Is(n => n == 0, message: build.Output);
 #endif
 
