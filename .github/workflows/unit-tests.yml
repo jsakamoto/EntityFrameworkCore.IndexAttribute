@@ -31,6 +31,7 @@ jobs:
       - name: Setup SQL Server
         run: docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=$MSSQL_PWD" -p 1433:1433 --name sql1 --hostname sql1 -d mcr.microsoft.com/mssql/server:2025-latest
 
-      # Perform unit tests
-      - name: Perform unit tests
-        run: dotnet test EFCore.IndexAttribute.Test -l "console;verbosity=normal" --nologo
+      # Run tests
+      - name: Run tests
+        working-directory: EFCore.IndexAttribute.Test
+        run: dotnet test --output detailed
