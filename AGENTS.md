@@ -16,7 +16,7 @@ dotnet test --project EFCore.IndexAttribute.Test -f net8.0 --filter-class "*Inde
 
 - SQL Server tests (`IndexAttributeTest`) read `MSSQL_SERVER`, `MSSQL_USER`, `MSSQL_PWD` (CI uses `localhost,1433` / `sa` / `Passw0rd` against a SQL Server docker container). The SQLite tests need nothing external.
 - `MigrationTest` copies `EFCore.IndexAttribute.Test/TestProject` to a temp dir and runs `dotnet build` and `dotnet ef migrations add`. `TestProject` is excluded from the test project's compilation and references the packed NuGet packages (`Version` in its csproj), restored from the local `dist/` feed (`nuget.config`). Build in Release first so `dist/` holds the packages, and keep the versions in sync.
-- Tests use xUnit v3 on Microsoft.Testing.Platform (`global.json` `test.runner`; needs .NET 10 SDK, and `dotnet test` takes `--project`, not a positional path). `.Is(...)` comes from the local `TestAssertionExtensions.cs`, because ChainingAssertion has no xUnit v3 build.
+- Tests use xUnit v3 on Microsoft.Testing.Platform (`global.json` `test.runner`; needs .NET 10 SDK, and `dotnet test` takes `--project`, not a positional path). Assertions (`.Is(...)`) come from `ChainingAssertion-xUnit.Bin` 3.0.0 (`using Xunit;`).
 - A Release build produces `.nupkg` files into `dist/` (`GeneratePackageOnBuild`, git-ignored).
 
 ## Architecture
