@@ -15,6 +15,9 @@ public class MigrationTest
 #elif NET10_0
     private const string Framework = "net10.0";
     private const string EFToolVersion = "10.0.*";
+#elif NET11_0
+    private const string Framework = "net11.0";
+    private const string EFToolVersion = "11.0.*";
 #endif
 
     [Fact]

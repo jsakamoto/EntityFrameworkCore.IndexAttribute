@@ -5,6 +5,8 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Toolbelt.ComponentModel.DataAnnotations.Schema;
 using Toolbelt.ComponentModel.DataAnnotations.Schema.Internals;
 using Toolbelt.EntityFrameworkCore.Metadata.Builders;
+using IndexAttribute = Toolbelt.ComponentModel.DataAnnotations.Schema.IndexAttribute;
+using PrimaryKeyAttribute = Toolbelt.ComponentModel.DataAnnotations.Schema.PrimaryKeyAttribute;
 
 namespace Toolbelt.ComponentModel.DataAnnotations
 {
