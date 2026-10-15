@@ -8,8 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Toolbelt.EntityFrameworkCore.IndexAttribute" Version="5.0.1.4" />
-    <PackageReference Include="Toolbelt.EntityFrameworkCore.IndexAttribute.SqlServer" Version="5.0.1.4" />
+    <PackageReference Include="Toolbelt.EntityFrameworkCore.IndexAttribute" Version="5.0.1.5" />
+    <PackageReference Include="Toolbelt.EntityFrameworkCore.IndexAttribute.SqlServer" Version="5.0.1.5" />
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net8.0' ">

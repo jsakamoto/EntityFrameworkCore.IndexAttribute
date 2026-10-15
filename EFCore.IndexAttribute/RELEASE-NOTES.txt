@@ -1,4 +1,8 @@
-﻿v.5.0.1.4
+﻿v.5.0.1.5
+- Fix the error "A key cannot be configured on ... because it is a derived type" that occurred when [PrimaryKey] is on a property of a base class in an inheritance hierarchy (#12)
+- Update Toolbelt.EntityFrameworkCore.AnnotationBasedModelBuilder to v.5.0.1.5, which contains the fix
+
+v.5.0.1.4
 - Supports EntityFramework Core 11.0 RC 2
 - Update README.md
 

@@ -1,4 +1,7 @@
-﻿v.5.0.1.4
+﻿v.5.0.1.5
+- No changes other than the version number
+
+v.5.0.1.4
 - Supports EntityFramework Core 11.0 RC 2
 - Update README.md
 
