@@ -29,7 +29,8 @@ jobs:
           dotnet-version: 11.0.x
           dotnet-quality: preview
 
-      # Run tests (they start SQL Server in a container by themselves)
+      # Run tests (they start SQL Server and PostgreSQL in containers by themselves)
+      # Two target frameworks at a time, since starting four SQL Server containers at once can time out on the runner
       - name: Run tests
         working-directory: EFCore.IndexAttribute.Test
-        run: dotnet test --output detailed
+        run: dotnet test --output detailed --max-parallel-test-modules 2
