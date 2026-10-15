@@ -41,5 +41,5 @@ Follow these three rules.
 
 ## Release conventions
 
-- All three packages share a `Version` (currently 5.0.1.3), set in each csproj. `TestProject`'s package references must match.
+- All three packages share a `Version` (currently 5.0.1.4), set in each csproj. `TestProject`'s package references must match.
 - Each project has a `RELEASE-NOTES.txt`. A `BeforeTargets="GenerateNuspec"` MSBuild target regex-extracts the topmost `v.x.y.z` section into `PackageReleaseNotes`, so new entries go on top and start with `v.` followed by a version.
