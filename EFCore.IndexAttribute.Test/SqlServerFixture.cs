@@ -9,9 +9,25 @@ namespace EntityFrameworkCore.IndexAttributeTest;
 /// </summary>
 public class SqlServerFixture : IAsyncLifetime
 {
-    private readonly MsSqlContainer _container = new MsSqlBuilder("mcr.microsoft.com/mssql/server:2025-latest").Build();
+    private MsSqlContainer _container = null!;
 
-    public async ValueTask InitializeAsync() => await this._container.StartAsync();
+    public async ValueTask InitializeAsync()
+    {
+        // SQL Server sometimes crashes or times out at startup on a busy CI runner, so retry with a fresh container.
+        for (var attempt = 1; ; attempt++)
+        {
+            this._container = new MsSqlBuilder("mcr.microsoft.com/mssql/server:2025-latest").Build();
+            try
+            {
+                await this._container.StartAsync();
+                return;
+            }
+            catch when (attempt < 3)
+            {
+                await this._container.DisposeAsync();
+            }
+        }
+    }
 
     public ValueTask DisposeAsync() => this._container.DisposeAsync();
 
