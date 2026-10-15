@@ -6,25 +6,19 @@ using Xunit;
 
 namespace EntityFrameworkCore.IndexAttributeTest;
 
+[Collection(nameof(SqlServerCollection))]
 public class IndexAttributeTest
 {
-    private static MyDbContextBase CreateMyDbContext(bool enableSqlServerFeature)
+    private readonly SqlServerFixture _sqlServer;
+
+    public IndexAttributeTest(SqlServerFixture sqlServer)
     {
-        var server = Environment.GetEnvironmentVariable("MSSQL_SERVER");
-        if (string.IsNullOrEmpty(server)) server = "(localdb)\\mssqllocaldb";
-        var user = Environment.GetEnvironmentVariable("MSSQL_USER");
-        var pwd = Environment.GetEnvironmentVariable("MSSQL_PWD");
-        var credential = (!string.IsNullOrEmpty(user) && !string.IsNullOrEmpty(pwd)) ? $"User={user};Password={pwd}" : "Integrated Security=True";
-        var connStrBase = $"Server={server};{credential};TrustServerCertificate=True;";
+        this._sqlServer = sqlServer;
+    }
 
-        var dbName = Guid.NewGuid().ToString("N");
-
-        using (var connToMaster = new SqlConnection(connStrBase + "Database=master;"))
-        using (var cmd = new SqlCommand($"CREATE DATABASE [{dbName}]", connToMaster))
-        {
-            connToMaster.Open();
-            cmd.ExecuteNonQuery();
-        }
+    private MyDbContextBase CreateMyDbContext(bool enableSqlServerFeature)
+    {
+        var connStr = this._sqlServer.CreateDatabase();
 
         var loggerFactory = LoggerFactory.Create(builder =>
         {
@@ -35,7 +29,6 @@ public class IndexAttributeTest
                 level: LogLevel.Information);
         });
 
-        var connStr = connStrBase + $"Database={dbName};";
         var option = new DbContextOptionsBuilder<MyDbContextBase>()
             .UseSqlServer(connStr)
             .UseLoggerFactory(loggerFactory)
@@ -86,7 +79,7 @@ public class IndexAttributeTest
 
     private IEnumerable<string> CreateDbAndDumpIndexes(bool enableSqlServerFeature)
     {
-        using var db = CreateMyDbContext(enableSqlServerFeature);
+        using var db = this.CreateMyDbContext(enableSqlServerFeature);
 
         // Create database.
         db.Database.OpenConnection();

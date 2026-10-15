@@ -6,11 +6,6 @@ on:
       - 'trial/**'
       - master
 
-env:
-  MSSQL_SERVER: localhost,1433
-  MSSQL_USER: sa
-  MSSQL_PWD: Passw0rd
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -34,11 +29,7 @@ jobs:
           dotnet-version: 11.0.x
           dotnet-quality: preview
 
-      # Install SQL Server
-      - name: Setup SQL Server
-        run: docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=$MSSQL_PWD" -p 1433:1433 --name sql1 --hostname sql1 -d mcr.microsoft.com/mssql/server:2025-latest
-
-      # Run tests
+      # Run tests (they start SQL Server in a container by themselves)
       - name: Run tests
         working-directory: EFCore.IndexAttribute.Test
         run: dotnet test --output detailed
