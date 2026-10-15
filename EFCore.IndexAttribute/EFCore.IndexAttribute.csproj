@@ -37,13 +37,6 @@
     <ProjectReference Include="..\EFCore.IndexAttribute.Attribute\EFCore.IndexAttribute.Attribute.csproj" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' == 'net10.0'">
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="10.0.12" />
-  </ItemGroup>
-  <ItemGroup Condition="'$(TargetFramework)' == 'net11.0'">
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="11.0.0-rc.2.26504.105" />
-  </ItemGroup>
-
   <Target Name="PreparePackageReleaseNoteFromFile" BeforeTargets="GenerateNuspec">
     <ReadLinesFromFile File="RELEASE-NOTES.txt">
       <Output TaskParameter="Lines" ItemName="ReleaseNoteLines" />
