@@ -174,6 +174,8 @@ See the EF 6.x documents below for more details.
 
 The `[IndexColumn]` attribute with `IsClustered=true` works only on entity types that are not owned types.
 
+Don't give a name to `[PrimaryKey]` on a base class property, such as `[PrimaryKey("PK_Items")]`, when you use the table-per-type (TPT) or table-per-concrete-type (TPC) mapping. EF Core gives that one name to the primary key of every table in the hierarchy, so SQL Server and PostgreSQL fail to create the tables because of the duplicate name. Use `[PrimaryKey]` without a name instead. Then EF Core names each primary key after its own table.
+
 ## Release Notes
 
 - [Toolbelt.EntityFrameworkCore.IndexAttribute.Attribute](https://j.mp/3lSWUfw)
