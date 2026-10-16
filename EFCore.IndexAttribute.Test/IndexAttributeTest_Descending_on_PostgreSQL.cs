@@ -38,7 +38,9 @@ public class IndexAttributeTest_Descending_on_PostgreSQL
             }
             dump.Is(
                 @"CREATE INDEX ""IX_Category_Score"" ON public.""Rankings"" USING btree (""Category"", ""Score"" DESC)",
-                @"CREATE INDEX ""IX_Rankings_CreatedAt"" ON public.""Rankings"" USING btree (""CreatedAt"" DESC)");
+                @"CREATE INDEX ""IX_Group_Level"" ON public.""Rankings"" USING btree (""Detail_Group"", ""Detail_Level"" DESC)",
+                @"CREATE INDEX ""IX_Rankings_CreatedAt"" ON public.""Rankings"" USING btree (""CreatedAt"" DESC)",
+                @"CREATE INDEX ""IX_Rankings_Detail_UpdatedAt"" ON public.""Rankings"" USING btree (""Detail_UpdatedAt"" DESC)");
         }
         finally
         {

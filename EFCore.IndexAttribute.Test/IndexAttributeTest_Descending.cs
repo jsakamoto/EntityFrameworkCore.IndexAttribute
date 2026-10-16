@@ -45,7 +45,10 @@ public class IndexAttributeTest_Descending
             dump.Is(
                 "IX_Category_Score|Category|False",
                 "IX_Category_Score|Score|True",
-                "IX_Rankings_CreatedAt|CreatedAt|True");
+                "IX_Group_Level|Detail_Group|False",
+                "IX_Group_Level|Detail_Level|True",
+                "IX_Rankings_CreatedAt|CreatedAt|True",
+                "IX_Rankings_Detail_UpdatedAt|Detail_UpdatedAt|True");
         }
         finally { db.Database.EnsureDeleted(); }
     }

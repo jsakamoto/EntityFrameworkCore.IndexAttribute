@@ -27,25 +27,26 @@ namespace Toolbelt.ComponentModel.DataAnnotations
 
             public bool[] IsDescending { get; }
 
+            // The options of the index are taken from the attributes on all of its columns (#15), so they can be set on any one of them.
 #pragma warning disable CS0618 // Type or member is obsolete
-            public IndexBuilderArgument(IndexAttribute indexAttr, AnnotatedProperty<IndexAttribute>[] columns)
+            public IndexBuilderArgument(AnnotatedProperty<IndexAttribute>[] columns)
 #pragma warning restore CS0618 // Type or member is obsolete
             {
                 this.PropertyNames = columns.Select(column => column.Name).ToArray();
-                this.IndexName = indexAttr.Name;
-                this.IsUnique = indexAttr.IsUnique;
-                this.IsClustered = indexAttr.IsClustered;
-                this.Includes = indexAttr.Includes ?? new string[0];
+                this.IndexName = columns[0].Attribute.Name;
+                this.IsUnique = columns.Any(column => column.Attribute.IsUnique);
+                this.IsClustered = columns.Any(column => column.Attribute.IsClustered);
+                this.Includes = columns.SelectMany(column => column.Attribute.Includes ?? new string[0]).Distinct().ToArray();
                 this.IsDescending = columns.Select(column => column.Attribute is Schema.V5.IndexColumnAttribute indexColumnAttr && indexColumnAttr.IsDescending).ToArray();
             }
 
 #pragma warning disable CS0618 // Type or member is obsolete
-            public IndexBuilderArgument(PrimaryKeyAttribute primaryKeyAttr, AnnotatedProperty<PrimaryKeyAttribute>[] columns)
+            public IndexBuilderArgument(AnnotatedProperty<PrimaryKeyAttribute>[] columns)
 #pragma warning restore CS0618 // Type or member is obsolete
             {
                 this.PropertyNames = columns.Select(column => column.Name).ToArray();
-                this.IndexName = primaryKeyAttr.Name;
-                this.IsClustered = primaryKeyAttr.IsClustered;
+                this.IndexName = columns[0].Attribute.Name;
+                this.IsClustered = columns.Any(column => column.Attribute.IsClustered);
                 this.IsDescending = new bool[columns.Length];
             }
         }
@@ -84,32 +85,29 @@ namespace Toolbelt.ComponentModel.DataAnnotations
 #pragma warning disable CS0618 // Type or member is obsolete
             AnnotationBasedModelBuilder.Build<IndexAttribute, IndexBuilderArgument>(
                 modelBuilder,
-                (props) => CreateBuilderArguments(props, (attr, propNames) => new IndexBuilderArgument(attr, propNames)),
+                (props) => CreateBuilderArguments(props, columns => new IndexBuilderArgument(columns)),
                 (b1, b2, arg) => BuildIndex(options, b1, b2, arg, postProcessForIndex));
             AnnotationBasedModelBuilder.Build<PrimaryKeyAttribute, IndexBuilderArgument>(
                 modelBuilder,
-                (props) => CreateBuilderArguments(props, (attr, propNames) => new IndexBuilderArgument(attr, propNames)),
+                (props) => CreateBuilderArguments(props, columns => new IndexBuilderArgument(columns)),
                 (b1, b2, arg) => BuildPrimaryKey(b1, b2, arg, postProcessForPrimaryKey));
 #pragma warning restore CS0618 // Type or member is obsolete
         }
 
         private static IndexBuilderArgument[] CreateBuilderArguments<TAttr>(
             AnnotatedProperty<TAttr>[] annotatedProperties,
-            Func<TAttr, AnnotatedProperty<TAttr>[], IndexBuilderArgument> createBuilderArgInstance
+            Func<AnnotatedProperty<TAttr>[], IndexBuilderArgument> createBuilderArgInstance
         )
             where TAttr : Attribute, INameAndOrder
         {
             var unnamedIndexArgs = annotatedProperties
                 .Where(prop => prop.Attribute.Name == "")
-                .Select(prop => createBuilderArgInstance(prop.Attribute, new[] { prop }));
+                .Select(prop => createBuilderArgInstance(new[] { prop }));
 
             var namedIndexArgs = annotatedProperties
                 .Where(prop => prop.Attribute.Name != "")
                 .GroupBy(prop => prop.Attribute.Name)
-                .Select(g => createBuilderArgInstance(
-                    g.First().Attribute,
-                    g.OrderBy(item => item.Attribute.Order).ToArray())
-                );
+                .Select(g => createBuilderArgInstance(g.OrderBy(item => item.Attribute.Order).ToArray()));
 
             var indexBuilderArgs = unnamedIndexArgs.Concat(namedIndexArgs).ToArray();
             return indexBuilderArgs;

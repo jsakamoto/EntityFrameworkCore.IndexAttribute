@@ -25,6 +25,8 @@ public class IndexAttributeTest_Descending_on_SQLite
         }
         dump.Is(
             @"CREATE INDEX ""IX_Category_Score"" ON ""Rankings"" (""Category"", ""Score"" DESC)",
-            @"CREATE INDEX ""IX_Rankings_CreatedAt"" ON ""Rankings"" (""CreatedAt"" DESC)");
+            @"CREATE INDEX ""IX_Group_Level"" ON ""Rankings"" (""Detail_Group"", ""Detail_Level"" DESC)",
+            @"CREATE INDEX ""IX_Rankings_CreatedAt"" ON ""Rankings"" (""CreatedAt"" DESC)",
+            @"CREATE INDEX ""IX_Rankings_Detail_UpdatedAt"" ON ""Rankings"" (""Detail_UpdatedAt"" DESC)");
     }
 }
