@@ -101,7 +101,7 @@ As a result, the database that EF Core creates has the indexes that you specifie
 
 ### Name and column order
 
-The first argument is the index name, and the second one is the column order. If you put the same index name on two or more properties, they become one multi-column index, sorted by the column order. If you don't specify a name, EF Core names the index by its convention.
+The first argument is the index name, and the second one is the column order. If you put the same index name on two or more properties of an entity, they become one multi-column index, sorted by the column order. If you don't specify a name, EF Core names the index by its convention, and each property gets its own single-column index.
 
 ```csharp
 public class Person
@@ -116,6 +116,26 @@ public class Person
 }
 ```
 
+Specify the column order on every column of a multi-column index. Without it, the order of the columns is not defined.
+
+The columns of one index can also be spread over a base class and its derived class, as long as the base class is not an entity type of its own.
+
+```csharp
+public abstract class TenantEntityBase
+{
+    [IndexColumn("IX_Tenant_Code", 0)]
+    public int TenantId { get; set; }
+}
+
+public class Product : TenantEntityBase
+{
+    public int Id { get; set; }
+
+    [IndexColumn("IX_Tenant_Code", 1)]
+    public string Code { get; set; }
+}
+```
+
 ### Properties
 
 Property       | Description
@@ -125,7 +145,7 @@ Property       | Description
 `IsClustered`  | Creates a clustered index. SQL Server only. See also [Appendix B](#appendix-b---notes-on-isclusteredtrue).
 `Includes`     | Adds the columns of the given property names to the index as included columns. SQL Server only.
 
-For a multi-column index, set `IsUnique`, `IsClustered`, and `Includes` to the same values on every column of the index.
+In a multi-column index, you only need to set `IsUnique`, `IsClustered`, and `Includes` on one of its columns. They apply to the whole index. If two or more columns have `Includes`, all of the given columns are included. (Package v.5.1.0 and earlier read these properties only from one of the columns, so set them on every column if you use those versions.)
 
 ```csharp
 public class Ranking
@@ -135,7 +155,7 @@ public class Ranking
     [IndexColumn(IsUnique = true)]
     public string Code { get; set; }
 
-    [IndexColumn("IX_Category_Score", 0)]
+    [IndexColumn("IX_Category_Score", 0, IsUnique = true)]
     public string Category { get; set; }
 
     [IndexColumn("IX_Category_Score", 1, IsDescending = true)]
@@ -149,15 +169,17 @@ public class Ranking
 
 ## The `[PrimaryKey]` attribute
 
-The `[PrimaryKey]` attribute (in the same namespace as `[IndexColumn]`) defines the primary key. Like `[IndexColumn]`, it takes the key name and the column order, so you can define a composite primary key. On SQL Server, it also has the `IsClustered` property, so you can create a non-clustered primary key.
+The `[PrimaryKey]` attribute (in the same namespace as `[IndexColumn]`) defines the primary key. On SQL Server, its `IsClustered` property lets you create a non-clustered primary key.
+
+To define a composite primary key, give the same key name and the column order to every column, like a multi-column index. Without a name, each `[PrimaryKey]` attribute defines a primary key of one column, so only one of them is used. You only need to set `IsClustered` on one of the columns.
 
 ```csharp
 public class OrderLine
 {
-    [PrimaryKey("PK_OrderLine", 0, IsClustered = false)]
+    [PrimaryKey("PK_OrderLine", 0)]
     public int OrderId { get; set; }
 
-    [PrimaryKey("PK_OrderLine", 1, IsClustered = false)]
+    [PrimaryKey("PK_OrderLine", 1)]
     public int LineNumber { get; set; }
 }
 ```
@@ -248,6 +270,7 @@ See the EF 6.x documents below for more details.
 
 - The `[IndexColumn]` attribute with `IsClustered=true` works only on entity types that are not owned types.
 - The `[PrimaryKey]` attribute doesn't work on owned types. Configure their keys with the Fluent API in `OnModelCreating()` instead.
+- A multi-column index can't span two entity types of an inheritance hierarchy. When the base class is also an entity type (TPH, TPT, or TPC mapping), put all the columns of an index in the same class.
 - Don't give a name to `[PrimaryKey]` on a base class property, such as `[PrimaryKey("PK_Items")]`, when you use the table-per-type (TPT) or table-per-concrete-type (TPC) mapping. EF Core gives that one name to the primary key of every table in the hierarchy, so SQL Server and PostgreSQL fail to create the tables because of the duplicate name. Use `[PrimaryKey]` without a name instead. Then EF Core names each primary key after its own table.
 
 ## Release Notes

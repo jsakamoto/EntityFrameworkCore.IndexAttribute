@@ -1,4 +1,9 @@
-﻿v.5.1.0
+﻿v.5.2.0
+- Apply IsUnique, IsClustered, and Includes of [IndexColumn] to the whole multi-column index when they are set on any one of its columns. (#15)
+- Apply IsClustered of [PrimaryKey] to the whole composite primary key when it is set on any one of its columns
+- Note for upgrading. If you set these options on only some columns of an index, the index can change after this update. It can become unique or clustered, so you may need a new migration. Also, BuildIndexesFromAnnotations() can throw NotSupportedException for IsClustered or Includes that was ignored before
+
+v.5.1.0
 - Add the IsDescending property to the [IndexColumn] attribute, which sorts the column of the index in descending order. It requires EF Core 7.0 or later (#1)
 
 v.5.0.1.5

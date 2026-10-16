@@ -1,4 +1,7 @@
-﻿v.5.1.0
+﻿v.5.2.0
+- No changes other than the version number
+
+v.5.1.0
 - Add the IsDescending property to the [IndexColumn] attribute (#1)
 
 v.5.0.1.5
