@@ -45,5 +45,7 @@ Follow these three rules.
 
 ## Release conventions
 
-- All three packages share a `Version` (currently 5.0.1.5), set in each csproj. `TestProject`'s package references must match.
+- All three packages share a `Version` (currently 5.1.0), set in each csproj. `TestProject`'s package references must match.
+- Write the version as `x.y.z` (for example `5.1.0`) while the fourth part is 0, in the csproj files, `RELEASE-NOTES.txt` and the git tags (`builder/v.5.1.0`). Use four parts only when the fourth part is not 0 (for example `5.0.1.5`).
+- The version of this repo does not have to match the AnnotationBasedModelBuilder and DecimalAttribute repos. A new feature raises the minor version only here (5.1.0 added `IsDescending`).
 - Each project has a `RELEASE-NOTES.txt`. A `BeforeTargets="GenerateNuspec"` MSBuild target regex-extracts the topmost `v.x.y.z` section into `PackageReleaseNotes`, so new entries go on top and start with `v.` followed by a version.

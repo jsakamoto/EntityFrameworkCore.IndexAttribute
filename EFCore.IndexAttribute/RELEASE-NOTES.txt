@@ -1,4 +1,7 @@
-﻿v.5.0.1.5
+﻿v.5.1.0
+- Add the IsDescending property to the [IndexColumn] attribute, which sorts the column of the index in descending order. It requires EF Core 7.0 or later (#1)
+
+v.5.0.1.5
 - Fix the error "A key cannot be configured on ... because it is a derived type" that occurred when [PrimaryKey] is on a property of a base class in an inheritance hierarchy (#12)
 - Update Toolbelt.EntityFrameworkCore.AnnotationBasedModelBuilder to v.5.0.1.5, which contains the fix
 
