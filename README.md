@@ -95,9 +95,31 @@ The `BuildIndexesFromAnnotations()` (or `BuildIndexesFromAnnotationsForSqlServer
 
 As a result, the database that EF Core creates has the indexes that you specified with the `[IndexColumn]` attributes.
 
+### Descending order
+
+To sort a column of the index in descending order, set the `IsDescending` property of the `[IndexColumn]` attribute to true. You can set it on each column of a multi-column index. This feature requires EF Core 7.0 or later.
+
+```csharp
+public class Ranking
+{
+    public int Id { get; set; }
+
+    [IndexColumn(IsDescending = true)]
+    public DateTime CreatedAt { get; set; }
+
+    [IndexColumn("IX_Category_Score", 0)]
+    public string Category { get; set; }
+
+    [IndexColumn("IX_Category_Score", 1, IsDescending = true)]
+    public int Score { get; set; }
+}
+```
+
 ## Appendix A - Suppress "NotSupportedException"
 
 You will get a "NotSupportedException" when you call `BuildIndexesFromAnnotations()` with a model that has an `[IndexColumn]` attribute whose "IsClustered" property is true, or whose "Includes" property is not empty.
+
+You will also get it on EF Core 6.0 or earlier with an `[IndexColumn]` attribute whose "IsDescending" property is true. If you suppress it with `options.SuppressNotSupportedException.IsDescending = true`, the index is created in ascending order.
 
 If you still need to call `BuildIndexesFromAnnotations()` in this case (for example, to share the model between different database products), you can suppress the exception with options, like this.
 

@@ -19,6 +19,11 @@
             /// "Includes" porperty of [Index] attribute.
             /// </summary>
             public bool Includes { get; set; }
+
+            /// <summary>
+            /// "IsDescending" property of [IndexColumn] attribute, which requires EF Core 7.0 or later.
+            /// </summary>
+            public bool IsDescending { get; set; }
         }
 
         /// <summary>

@@ -11,6 +11,11 @@ namespace Toolbelt.ComponentModel.DataAnnotations.Schema.V5
 #pragma warning restore CS0618 // Type or member is obsolete
     {
         /// <summary>
+        /// Gets or sets a value that indicates whether this column is sorted in descending order in the index. This requires EF Core 7.0 or later.
+        /// </summary>
+        public bool IsDescending { get; set; }
+
+        /// <summary>
         /// Initializes a new IndexAttribute instance for an index that will be named by convention and has no column order, uniqueness specified.
         /// </summary>
         public IndexColumnAttribute()
